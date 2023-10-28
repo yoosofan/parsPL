@@ -16,6 +16,8 @@ Run a sample:
 
 This project started at 2010 and fininshed in 2013.
 
+For more information about ParsPL language and its compiler you can read its Persian report in docs/report.fa.pdf
+
 I may not able to continue to work on this project and provide new update but I am ready to check and probably accept your useful request pulls.
 
 The best compiler and interpreter construction tools for this project is PLY. Antlr does not easily support unicode characters but PLY does. Don't search any other tool because your time is limited and you can not spend a lot of time on testing other tools.
