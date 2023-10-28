@@ -1,4 +1,4 @@
-Created by PLY version 3.4 (http://www.dabeaz.com/ply)
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
 Unused terminals:
 
@@ -117,7 +117,7 @@ state 0
     (10) newLineOrEmpty -> . NEWLINE newLineOrEmpty
     (11) newLineOrEmpty -> .
 
-    NEWLINE         shift and go to state 3
+    NEWLINE         shift and go to state 5
     IF              reduce using rule 11 (newLineOrEmpty -> .)
     WHILE           reduce using rule 11 (newLineOrEmpty -> .)
     FUNCTION        reduce using rule 11 (newLineOrEmpty -> .)
@@ -128,50 +128,25 @@ state 0
     NUMBER          reduce using rule 11 (newLineOrEmpty -> .)
     LITERAL         reduce using rule 11 (newLineOrEmpty -> .)
 
-    stmts                          shift and go to state 1
-    newLineOrEmpty                 shift and go to state 5
-    sourceOfaFile                  shift and go to state 2
-    stmt                           shift and go to state 4
+    sourceOfaFile                  shift and go to state 1
+    stmts                          shift and go to state 2
+    stmt                           shift and go to state 3
+    newLineOrEmpty                 shift and go to state 4
 
 state 1
+
+    (0) S' -> sourceOfaFile .
+
+
+
+state 2
 
     (1) sourceOfaFile -> stmts .
 
     $end            reduce using rule 1 (sourceOfaFile -> stmts .)
 
 
-state 2
-
-    (0) S' -> sourceOfaFile .
-
-
-
 state 3
-
-    (10) newLineOrEmpty -> NEWLINE . newLineOrEmpty
-    (10) newLineOrEmpty -> . NEWLINE newLineOrEmpty
-    (11) newLineOrEmpty -> .
-
-    NEWLINE         shift and go to state 3
-    IF              reduce using rule 11 (newLineOrEmpty -> .)
-    WHILE           reduce using rule 11 (newLineOrEmpty -> .)
-    FUNCTION        reduce using rule 11 (newLineOrEmpty -> .)
-    RETURN          reduce using rule 11 (newLineOrEmpty -> .)
-    ID              reduce using rule 11 (newLineOrEmpty -> .)
-    MINUS           reduce using rule 11 (newLineOrEmpty -> .)
-    LPAREN          reduce using rule 11 (newLineOrEmpty -> .)
-    NUMBER          reduce using rule 11 (newLineOrEmpty -> .)
-    LITERAL         reduce using rule 11 (newLineOrEmpty -> .)
-    LBRACE          reduce using rule 11 (newLineOrEmpty -> .)
-    $end            reduce using rule 11 (newLineOrEmpty -> .)
-    RBRACE          reduce using rule 11 (newLineOrEmpty -> .)
-    ELSE            reduce using rule 11 (newLineOrEmpty -> .)
-
-  ! NEWLINE         [ reduce using rule 11 (newLineOrEmpty -> .) ]
-
-    newLineOrEmpty                 shift and go to state 6
-
-state 4
 
     (2) stmts -> stmt . stmts
     (3) stmts -> stmt .
@@ -183,7 +158,7 @@ state 4
 
     $end            reduce using rule 3 (stmts -> stmt .)
     RBRACE          reduce using rule 3 (stmts -> stmt .)
-    NEWLINE         shift and go to state 3
+    NEWLINE         shift and go to state 5
     IF              reduce using rule 11 (newLineOrEmpty -> .)
     WHILE           reduce using rule 11 (newLineOrEmpty -> .)
     FUNCTION        reduce using rule 11 (newLineOrEmpty -> .)
@@ -194,11 +169,11 @@ state 4
     NUMBER          reduce using rule 11 (newLineOrEmpty -> .)
     LITERAL         reduce using rule 11 (newLineOrEmpty -> .)
 
-    stmts                          shift and go to state 7
-    newLineOrEmpty                 shift and go to state 5
-    stmt                           shift and go to state 4
+    stmt                           shift and go to state 3
+    stmts                          shift and go to state 6
+    newLineOrEmpty                 shift and go to state 4
 
-state 5
+state 4
 
     (6) stmt -> newLineOrEmpty . statement
     (7) statement -> . IF comparison suite
@@ -221,41 +196,47 @@ state 5
     (38) expression -> . lvalue
     (39) expression -> . LITERAL
 
-    IF              shift and go to state 18
-    WHILE           shift and go to state 10
-    FUNCTION        shift and go to state 13
-    RETURN          shift and go to state 8
-    ID              shift and go to state 17
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
+    IF              shift and go to state 8
+    WHILE           shift and go to state 9
+    FUNCTION        shift and go to state 10
+    RETURN          shift and go to state 15
+    ID              shift and go to state 11
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
 
-    statement                      shift and go to state 14
-    lvalue                         shift and go to state 12
-    expression                     shift and go to state 19
+    statement                      shift and go to state 7
+    lvalue                         shift and go to state 13
+    expression                     shift and go to state 14
+
+state 5
+
+    (10) newLineOrEmpty -> NEWLINE . newLineOrEmpty
+    (10) newLineOrEmpty -> . NEWLINE newLineOrEmpty
+    (11) newLineOrEmpty -> .
+
+  ! shift/reduce conflict for NEWLINE resolved as shift
+    NEWLINE         shift and go to state 5
+    IF              reduce using rule 11 (newLineOrEmpty -> .)
+    WHILE           reduce using rule 11 (newLineOrEmpty -> .)
+    FUNCTION        reduce using rule 11 (newLineOrEmpty -> .)
+    RETURN          reduce using rule 11 (newLineOrEmpty -> .)
+    ID              reduce using rule 11 (newLineOrEmpty -> .)
+    MINUS           reduce using rule 11 (newLineOrEmpty -> .)
+    LPAREN          reduce using rule 11 (newLineOrEmpty -> .)
+    NUMBER          reduce using rule 11 (newLineOrEmpty -> .)
+    LITERAL         reduce using rule 11 (newLineOrEmpty -> .)
+    LBRACE          reduce using rule 11 (newLineOrEmpty -> .)
+    ELSE            reduce using rule 11 (newLineOrEmpty -> .)
+    $end            reduce using rule 11 (newLineOrEmpty -> .)
+    RBRACE          reduce using rule 11 (newLineOrEmpty -> .)
+
+  ! NEWLINE         [ reduce using rule 11 (newLineOrEmpty -> .) ]
+
+    newLineOrEmpty                 shift and go to state 19
 
 state 6
-
-    (10) newLineOrEmpty -> NEWLINE newLineOrEmpty .
-
-    IF              reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
-    WHILE           reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
-    FUNCTION        reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
-    RETURN          reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
-    ID              reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
-    MINUS           reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
-    LPAREN          reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
-    NUMBER          reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
-    LITERAL         reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
-    LBRACE          reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
-    NEWLINE         reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
-    $end            reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
-    RBRACE          reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
-    ELSE            reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
-
-
-state 7
 
     (2) stmts -> stmt stmts .
 
@@ -263,130 +244,7 @@ state 7
     RBRACE          reduce using rule 2 (stmts -> stmt stmts .)
 
 
-state 8
-
-    (14) statement -> RETURN . expression NEWLINE
-    (26) expression -> . expression PLUS expression
-    (27) expression -> . expression MINUS expression
-    (28) expression -> . expression TIMES expression
-    (29) expression -> . expression DIVIDE expression
-    (30) expression -> . MINUS expression
-    (31) expression -> . LPAREN expression RPAREN
-    (32) expression -> . ID LPAREN argList RPAREN
-    (37) expression -> . NUMBER
-    (38) expression -> . lvalue
-    (39) expression -> . LITERAL
-    (40) lvalue -> . ID
-    (41) lvalue -> . ID LBRACKET indexList RBRACKET
-
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
-
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 22
-
-state 9
-
-    (37) expression -> NUMBER .
-
-    NEWLINE         reduce using rule 37 (expression -> NUMBER .)
-    PLUS            reduce using rule 37 (expression -> NUMBER .)
-    MINUS           reduce using rule 37 (expression -> NUMBER .)
-    TIMES           reduce using rule 37 (expression -> NUMBER .)
-    DIVIDE          reduce using rule 37 (expression -> NUMBER .)
-    LBRACE          reduce using rule 37 (expression -> NUMBER .)
-    EQ              reduce using rule 37 (expression -> NUMBER .)
-    NE              reduce using rule 37 (expression -> NUMBER .)
-    GT              reduce using rule 37 (expression -> NUMBER .)
-    GE              reduce using rule 37 (expression -> NUMBER .)
-    LT              reduce using rule 37 (expression -> NUMBER .)
-    LE              reduce using rule 37 (expression -> NUMBER .)
-    RPAREN          reduce using rule 37 (expression -> NUMBER .)
-    COMMA           reduce using rule 37 (expression -> NUMBER .)
-    RBRACKET        reduce using rule 37 (expression -> NUMBER .)
-
-
-state 10
-
-    (9) statement -> WHILE . comparison suite
-    (20) comparison -> . expression EQ expression
-    (21) comparison -> . expression NE expression
-    (22) comparison -> . expression GT expression
-    (23) comparison -> . expression GE expression
-    (24) comparison -> . expression LT expression
-    (25) comparison -> . expression LE expression
-    (26) expression -> . expression PLUS expression
-    (27) expression -> . expression MINUS expression
-    (28) expression -> . expression TIMES expression
-    (29) expression -> . expression DIVIDE expression
-    (30) expression -> . MINUS expression
-    (31) expression -> . LPAREN expression RPAREN
-    (32) expression -> . ID LPAREN argList RPAREN
-    (37) expression -> . NUMBER
-    (38) expression -> . lvalue
-    (39) expression -> . LITERAL
-    (40) lvalue -> . ID
-    (41) lvalue -> . ID LBRACKET indexList RBRACKET
-
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
-
-    comparison                     shift and go to state 23
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 24
-
-state 11
-
-    (30) expression -> MINUS . expression
-    (26) expression -> . expression PLUS expression
-    (27) expression -> . expression MINUS expression
-    (28) expression -> . expression TIMES expression
-    (29) expression -> . expression DIVIDE expression
-    (30) expression -> . MINUS expression
-    (31) expression -> . LPAREN expression RPAREN
-    (32) expression -> . ID LPAREN argList RPAREN
-    (37) expression -> . NUMBER
-    (38) expression -> . lvalue
-    (39) expression -> . LITERAL
-    (40) lvalue -> . ID
-    (41) lvalue -> . ID LBRACKET indexList RBRACKET
-
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
-
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 25
-
-state 12
-
-    (13) statement -> lvalue . EQUALS expression NEWLINE
-    (38) expression -> lvalue .
-
-    EQUALS          shift and go to state 26
-    NEWLINE         reduce using rule 38 (expression -> lvalue .)
-    PLUS            reduce using rule 38 (expression -> lvalue .)
-    MINUS           reduce using rule 38 (expression -> lvalue .)
-    TIMES           reduce using rule 38 (expression -> lvalue .)
-    DIVIDE          reduce using rule 38 (expression -> lvalue .)
-
-
-state 13
-
-    (12) statement -> FUNCTION . ID LPAREN paramList RPAREN suite
-
-    ID              shift and go to state 27
-
-
-state 14
+state 7
 
     (6) stmt -> newLineOrEmpty statement .
 
@@ -404,69 +262,7 @@ state 14
     RBRACE          reduce using rule 6 (stmt -> newLineOrEmpty statement .)
 
 
-state 15
-
-    (39) expression -> LITERAL .
-
-    NEWLINE         reduce using rule 39 (expression -> LITERAL .)
-    PLUS            reduce using rule 39 (expression -> LITERAL .)
-    MINUS           reduce using rule 39 (expression -> LITERAL .)
-    TIMES           reduce using rule 39 (expression -> LITERAL .)
-    DIVIDE          reduce using rule 39 (expression -> LITERAL .)
-    LBRACE          reduce using rule 39 (expression -> LITERAL .)
-    EQ              reduce using rule 39 (expression -> LITERAL .)
-    NE              reduce using rule 39 (expression -> LITERAL .)
-    GT              reduce using rule 39 (expression -> LITERAL .)
-    GE              reduce using rule 39 (expression -> LITERAL .)
-    LT              reduce using rule 39 (expression -> LITERAL .)
-    LE              reduce using rule 39 (expression -> LITERAL .)
-    RPAREN          reduce using rule 39 (expression -> LITERAL .)
-    COMMA           reduce using rule 39 (expression -> LITERAL .)
-    RBRACKET        reduce using rule 39 (expression -> LITERAL .)
-
-
-state 16
-
-    (31) expression -> LPAREN . expression RPAREN
-    (26) expression -> . expression PLUS expression
-    (27) expression -> . expression MINUS expression
-    (28) expression -> . expression TIMES expression
-    (29) expression -> . expression DIVIDE expression
-    (30) expression -> . MINUS expression
-    (31) expression -> . LPAREN expression RPAREN
-    (32) expression -> . ID LPAREN argList RPAREN
-    (37) expression -> . NUMBER
-    (38) expression -> . lvalue
-    (39) expression -> . LITERAL
-    (40) lvalue -> . ID
-    (41) lvalue -> . ID LBRACKET indexList RBRACKET
-
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
-
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 28
-
-state 17
-
-    (40) lvalue -> ID .
-    (41) lvalue -> ID . LBRACKET indexList RBRACKET
-    (32) expression -> ID . LPAREN argList RPAREN
-
-    EQUALS          reduce using rule 40 (lvalue -> ID .)
-    NEWLINE         reduce using rule 40 (lvalue -> ID .)
-    PLUS            reduce using rule 40 (lvalue -> ID .)
-    MINUS           reduce using rule 40 (lvalue -> ID .)
-    TIMES           reduce using rule 40 (lvalue -> ID .)
-    DIVIDE          reduce using rule 40 (lvalue -> ID .)
-    LBRACKET        shift and go to state 29
-    LPAREN          shift and go to state 30
-
-
-state 18
+state 8
 
     (7) statement -> IF . comparison suite
     (8) statement -> IF . comparison suite ELSE suite
@@ -489,164 +285,25 @@ state 18
     (40) lvalue -> . ID
     (41) lvalue -> . ID LBRACKET indexList RBRACKET
 
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
 
-    comparison                     shift and go to state 31
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 24
+    comparison                     shift and go to state 20
+    expression                     shift and go to state 21
+    lvalue                         shift and go to state 23
 
-state 19
+state 9
 
-    (15) statement -> expression . NEWLINE
-    (26) expression -> expression . PLUS expression
-    (27) expression -> expression . MINUS expression
-    (28) expression -> expression . TIMES expression
-    (29) expression -> expression . DIVIDE expression
-
-    NEWLINE         shift and go to state 33
-    PLUS            shift and go to state 35
-    MINUS           shift and go to state 36
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 32
-
-
-state 20
-
-    (38) expression -> lvalue .
-
-    PLUS            reduce using rule 38 (expression -> lvalue .)
-    MINUS           reduce using rule 38 (expression -> lvalue .)
-    TIMES           reduce using rule 38 (expression -> lvalue .)
-    DIVIDE          reduce using rule 38 (expression -> lvalue .)
-    NEWLINE         reduce using rule 38 (expression -> lvalue .)
-    LBRACE          reduce using rule 38 (expression -> lvalue .)
-    EQ              reduce using rule 38 (expression -> lvalue .)
-    NE              reduce using rule 38 (expression -> lvalue .)
-    GT              reduce using rule 38 (expression -> lvalue .)
-    GE              reduce using rule 38 (expression -> lvalue .)
-    LT              reduce using rule 38 (expression -> lvalue .)
-    LE              reduce using rule 38 (expression -> lvalue .)
-    RPAREN          reduce using rule 38 (expression -> lvalue .)
-    COMMA           reduce using rule 38 (expression -> lvalue .)
-    RBRACKET        reduce using rule 38 (expression -> lvalue .)
-
-
-state 21
-
-    (32) expression -> ID . LPAREN argList RPAREN
-    (40) lvalue -> ID .
-    (41) lvalue -> ID . LBRACKET indexList RBRACKET
-
-    LPAREN          shift and go to state 30
-    PLUS            reduce using rule 40 (lvalue -> ID .)
-    MINUS           reduce using rule 40 (lvalue -> ID .)
-    TIMES           reduce using rule 40 (lvalue -> ID .)
-    DIVIDE          reduce using rule 40 (lvalue -> ID .)
-    NEWLINE         reduce using rule 40 (lvalue -> ID .)
-    LBRACE          reduce using rule 40 (lvalue -> ID .)
-    COMMA           reduce using rule 40 (lvalue -> ID .)
-    RPAREN          reduce using rule 40 (lvalue -> ID .)
-    EQ              reduce using rule 40 (lvalue -> ID .)
-    NE              reduce using rule 40 (lvalue -> ID .)
-    GT              reduce using rule 40 (lvalue -> ID .)
-    GE              reduce using rule 40 (lvalue -> ID .)
-    LT              reduce using rule 40 (lvalue -> ID .)
-    LE              reduce using rule 40 (lvalue -> ID .)
-    RBRACKET        reduce using rule 40 (lvalue -> ID .)
-    LBRACKET        shift and go to state 29
-
-
-state 22
-
-    (14) statement -> RETURN expression . NEWLINE
-    (26) expression -> expression . PLUS expression
-    (27) expression -> expression . MINUS expression
-    (28) expression -> expression . TIMES expression
-    (29) expression -> expression . DIVIDE expression
-
-    NEWLINE         shift and go to state 37
-    PLUS            shift and go to state 35
-    MINUS           shift and go to state 36
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 32
-
-
-state 23
-
-    (9) statement -> WHILE comparison . suite
-    (4) suite -> . NEWLINE statement
-    (5) suite -> . newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty
-    (10) newLineOrEmpty -> . NEWLINE newLineOrEmpty
-    (11) newLineOrEmpty -> .
-
-    NEWLINE         shift and go to state 38
-    LBRACE          reduce using rule 11 (newLineOrEmpty -> .)
-
-    newLineOrEmpty                 shift and go to state 39
-    suite                          shift and go to state 40
-
-state 24
-
-    (20) comparison -> expression . EQ expression
-    (21) comparison -> expression . NE expression
-    (22) comparison -> expression . GT expression
-    (23) comparison -> expression . GE expression
-    (24) comparison -> expression . LT expression
-    (25) comparison -> expression . LE expression
-    (26) expression -> expression . PLUS expression
-    (27) expression -> expression . MINUS expression
-    (28) expression -> expression . TIMES expression
-    (29) expression -> expression . DIVIDE expression
-
-    EQ              shift and go to state 46
-    NE              shift and go to state 42
-    GT              shift and go to state 41
-    GE              shift and go to state 44
-    LT              shift and go to state 43
-    LE              shift and go to state 45
-    PLUS            shift and go to state 35
-    MINUS           shift and go to state 36
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 32
-
-
-state 25
-
-    (30) expression -> MINUS expression .
-    (26) expression -> expression . PLUS expression
-    (27) expression -> expression . MINUS expression
-    (28) expression -> expression . TIMES expression
-    (29) expression -> expression . DIVIDE expression
-
-    NEWLINE         reduce using rule 30 (expression -> MINUS expression .)
-    PLUS            reduce using rule 30 (expression -> MINUS expression .)
-    MINUS           reduce using rule 30 (expression -> MINUS expression .)
-    TIMES           reduce using rule 30 (expression -> MINUS expression .)
-    DIVIDE          reduce using rule 30 (expression -> MINUS expression .)
-    LBRACE          reduce using rule 30 (expression -> MINUS expression .)
-    EQ              reduce using rule 30 (expression -> MINUS expression .)
-    NE              reduce using rule 30 (expression -> MINUS expression .)
-    GT              reduce using rule 30 (expression -> MINUS expression .)
-    GE              reduce using rule 30 (expression -> MINUS expression .)
-    LT              reduce using rule 30 (expression -> MINUS expression .)
-    LE              reduce using rule 30 (expression -> MINUS expression .)
-    RPAREN          reduce using rule 30 (expression -> MINUS expression .)
-    COMMA           reduce using rule 30 (expression -> MINUS expression .)
-    RBRACKET        reduce using rule 30 (expression -> MINUS expression .)
-
-  ! PLUS            [ shift and go to state 35 ]
-  ! MINUS           [ shift and go to state 36 ]
-  ! TIMES           [ shift and go to state 34 ]
-  ! DIVIDE          [ shift and go to state 32 ]
-
-
-state 26
-
-    (13) statement -> lvalue EQUALS . expression NEWLINE
+    (9) statement -> WHILE . comparison suite
+    (20) comparison -> . expression EQ expression
+    (21) comparison -> . expression NE expression
+    (22) comparison -> . expression GT expression
+    (23) comparison -> . expression GE expression
+    (24) comparison -> . expression LT expression
+    (25) comparison -> . expression LE expression
     (26) expression -> . expression PLUS expression
     (27) expression -> . expression MINUS expression
     (28) expression -> . expression TIMES expression
@@ -660,38 +317,312 @@ state 26
     (40) lvalue -> . ID
     (41) lvalue -> . ID LBRACKET indexList RBRACKET
 
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
 
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 47
+    comparison                     shift and go to state 24
+    expression                     shift and go to state 21
+    lvalue                         shift and go to state 23
 
-state 27
+state 10
 
-    (12) statement -> FUNCTION ID . LPAREN paramList RPAREN suite
+    (12) statement -> FUNCTION . ID LPAREN paramList RPAREN suite
 
-    LPAREN          shift and go to state 48
+    ID              shift and go to state 25
 
 
-state 28
+state 11
 
-    (31) expression -> LPAREN expression . RPAREN
+    (40) lvalue -> ID .
+    (41) lvalue -> ID . LBRACKET indexList RBRACKET
+    (32) expression -> ID . LPAREN argList RPAREN
+
+    EQUALS          reduce using rule 40 (lvalue -> ID .)
+    NEWLINE         reduce using rule 40 (lvalue -> ID .)
+    PLUS            reduce using rule 40 (lvalue -> ID .)
+    MINUS           reduce using rule 40 (lvalue -> ID .)
+    TIMES           reduce using rule 40 (lvalue -> ID .)
+    DIVIDE          reduce using rule 40 (lvalue -> ID .)
+    LBRACKET        shift and go to state 26
+    LPAREN          shift and go to state 27
+
+
+state 12
+
+    (31) expression -> LPAREN . expression RPAREN
+    (26) expression -> . expression PLUS expression
+    (27) expression -> . expression MINUS expression
+    (28) expression -> . expression TIMES expression
+    (29) expression -> . expression DIVIDE expression
+    (30) expression -> . MINUS expression
+    (31) expression -> . LPAREN expression RPAREN
+    (32) expression -> . ID LPAREN argList RPAREN
+    (37) expression -> . NUMBER
+    (38) expression -> . lvalue
+    (39) expression -> . LITERAL
+    (40) lvalue -> . ID
+    (41) lvalue -> . ID LBRACKET indexList RBRACKET
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
+
+    expression                     shift and go to state 28
+    lvalue                         shift and go to state 23
+
+state 13
+
+    (13) statement -> lvalue . EQUALS expression NEWLINE
+    (38) expression -> lvalue .
+
+    EQUALS          shift and go to state 29
+    NEWLINE         reduce using rule 38 (expression -> lvalue .)
+    PLUS            reduce using rule 38 (expression -> lvalue .)
+    MINUS           reduce using rule 38 (expression -> lvalue .)
+    TIMES           reduce using rule 38 (expression -> lvalue .)
+    DIVIDE          reduce using rule 38 (expression -> lvalue .)
+
+
+state 14
+
+    (15) statement -> expression . NEWLINE
     (26) expression -> expression . PLUS expression
     (27) expression -> expression . MINUS expression
     (28) expression -> expression . TIMES expression
     (29) expression -> expression . DIVIDE expression
 
-    RPAREN          shift and go to state 49
-    PLUS            shift and go to state 35
-    MINUS           shift and go to state 36
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 32
+    NEWLINE         shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
 
 
-state 29
+state 15
+
+    (14) statement -> RETURN . expression NEWLINE
+    (26) expression -> . expression PLUS expression
+    (27) expression -> . expression MINUS expression
+    (28) expression -> . expression TIMES expression
+    (29) expression -> . expression DIVIDE expression
+    (30) expression -> . MINUS expression
+    (31) expression -> . LPAREN expression RPAREN
+    (32) expression -> . ID LPAREN argList RPAREN
+    (37) expression -> . NUMBER
+    (38) expression -> . lvalue
+    (39) expression -> . LITERAL
+    (40) lvalue -> . ID
+    (41) lvalue -> . ID LBRACKET indexList RBRACKET
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
+
+    expression                     shift and go to state 35
+    lvalue                         shift and go to state 23
+
+state 16
+
+    (30) expression -> MINUS . expression
+    (26) expression -> . expression PLUS expression
+    (27) expression -> . expression MINUS expression
+    (28) expression -> . expression TIMES expression
+    (29) expression -> . expression DIVIDE expression
+    (30) expression -> . MINUS expression
+    (31) expression -> . LPAREN expression RPAREN
+    (32) expression -> . ID LPAREN argList RPAREN
+    (37) expression -> . NUMBER
+    (38) expression -> . lvalue
+    (39) expression -> . LITERAL
+    (40) lvalue -> . ID
+    (41) lvalue -> . ID LBRACKET indexList RBRACKET
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
+
+    expression                     shift and go to state 36
+    lvalue                         shift and go to state 23
+
+state 17
+
+    (37) expression -> NUMBER .
+
+    NEWLINE         reduce using rule 37 (expression -> NUMBER .)
+    PLUS            reduce using rule 37 (expression -> NUMBER .)
+    MINUS           reduce using rule 37 (expression -> NUMBER .)
+    TIMES           reduce using rule 37 (expression -> NUMBER .)
+    DIVIDE          reduce using rule 37 (expression -> NUMBER .)
+    EQ              reduce using rule 37 (expression -> NUMBER .)
+    NE              reduce using rule 37 (expression -> NUMBER .)
+    GT              reduce using rule 37 (expression -> NUMBER .)
+    GE              reduce using rule 37 (expression -> NUMBER .)
+    LT              reduce using rule 37 (expression -> NUMBER .)
+    LE              reduce using rule 37 (expression -> NUMBER .)
+    RPAREN          reduce using rule 37 (expression -> NUMBER .)
+    COMMA           reduce using rule 37 (expression -> NUMBER .)
+    RBRACKET        reduce using rule 37 (expression -> NUMBER .)
+    LBRACE          reduce using rule 37 (expression -> NUMBER .)
+
+
+state 18
+
+    (39) expression -> LITERAL .
+
+    NEWLINE         reduce using rule 39 (expression -> LITERAL .)
+    PLUS            reduce using rule 39 (expression -> LITERAL .)
+    MINUS           reduce using rule 39 (expression -> LITERAL .)
+    TIMES           reduce using rule 39 (expression -> LITERAL .)
+    DIVIDE          reduce using rule 39 (expression -> LITERAL .)
+    EQ              reduce using rule 39 (expression -> LITERAL .)
+    NE              reduce using rule 39 (expression -> LITERAL .)
+    GT              reduce using rule 39 (expression -> LITERAL .)
+    GE              reduce using rule 39 (expression -> LITERAL .)
+    LT              reduce using rule 39 (expression -> LITERAL .)
+    LE              reduce using rule 39 (expression -> LITERAL .)
+    RPAREN          reduce using rule 39 (expression -> LITERAL .)
+    COMMA           reduce using rule 39 (expression -> LITERAL .)
+    RBRACKET        reduce using rule 39 (expression -> LITERAL .)
+    LBRACE          reduce using rule 39 (expression -> LITERAL .)
+
+
+state 19
+
+    (10) newLineOrEmpty -> NEWLINE newLineOrEmpty .
+
+    IF              reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
+    WHILE           reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
+    FUNCTION        reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
+    RETURN          reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
+    ID              reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
+    MINUS           reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
+    LPAREN          reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
+    NUMBER          reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
+    LITERAL         reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
+    LBRACE          reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
+    ELSE            reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
+    NEWLINE         reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
+    $end            reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
+    RBRACE          reduce using rule 10 (newLineOrEmpty -> NEWLINE newLineOrEmpty .)
+
+
+state 20
+
+    (7) statement -> IF comparison . suite
+    (8) statement -> IF comparison . suite ELSE suite
+    (4) suite -> . NEWLINE statement
+    (5) suite -> . newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty
+    (10) newLineOrEmpty -> . NEWLINE newLineOrEmpty
+    (11) newLineOrEmpty -> .
+
+    NEWLINE         shift and go to state 38
+    LBRACE          reduce using rule 11 (newLineOrEmpty -> .)
+
+    suite                          shift and go to state 37
+    newLineOrEmpty                 shift and go to state 39
+
+state 21
+
+    (20) comparison -> expression . EQ expression
+    (21) comparison -> expression . NE expression
+    (22) comparison -> expression . GT expression
+    (23) comparison -> expression . GE expression
+    (24) comparison -> expression . LT expression
+    (25) comparison -> expression . LE expression
+    (26) expression -> expression . PLUS expression
+    (27) expression -> expression . MINUS expression
+    (28) expression -> expression . TIMES expression
+    (29) expression -> expression . DIVIDE expression
+
+    EQ              shift and go to state 40
+    NE              shift and go to state 41
+    GT              shift and go to state 42
+    GE              shift and go to state 43
+    LT              shift and go to state 44
+    LE              shift and go to state 45
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+
+
+state 22
+
+    (32) expression -> ID . LPAREN argList RPAREN
+    (40) lvalue -> ID .
+    (41) lvalue -> ID . LBRACKET indexList RBRACKET
+
+    LPAREN          shift and go to state 27
+    EQ              reduce using rule 40 (lvalue -> ID .)
+    NE              reduce using rule 40 (lvalue -> ID .)
+    GT              reduce using rule 40 (lvalue -> ID .)
+    GE              reduce using rule 40 (lvalue -> ID .)
+    LT              reduce using rule 40 (lvalue -> ID .)
+    LE              reduce using rule 40 (lvalue -> ID .)
+    PLUS            reduce using rule 40 (lvalue -> ID .)
+    MINUS           reduce using rule 40 (lvalue -> ID .)
+    TIMES           reduce using rule 40 (lvalue -> ID .)
+    DIVIDE          reduce using rule 40 (lvalue -> ID .)
+    RPAREN          reduce using rule 40 (lvalue -> ID .)
+    NEWLINE         reduce using rule 40 (lvalue -> ID .)
+    COMMA           reduce using rule 40 (lvalue -> ID .)
+    RBRACKET        reduce using rule 40 (lvalue -> ID .)
+    LBRACE          reduce using rule 40 (lvalue -> ID .)
+    LBRACKET        shift and go to state 26
+
+
+state 23
+
+    (38) expression -> lvalue .
+
+    EQ              reduce using rule 38 (expression -> lvalue .)
+    NE              reduce using rule 38 (expression -> lvalue .)
+    GT              reduce using rule 38 (expression -> lvalue .)
+    GE              reduce using rule 38 (expression -> lvalue .)
+    LT              reduce using rule 38 (expression -> lvalue .)
+    LE              reduce using rule 38 (expression -> lvalue .)
+    PLUS            reduce using rule 38 (expression -> lvalue .)
+    MINUS           reduce using rule 38 (expression -> lvalue .)
+    TIMES           reduce using rule 38 (expression -> lvalue .)
+    DIVIDE          reduce using rule 38 (expression -> lvalue .)
+    RPAREN          reduce using rule 38 (expression -> lvalue .)
+    NEWLINE         reduce using rule 38 (expression -> lvalue .)
+    COMMA           reduce using rule 38 (expression -> lvalue .)
+    RBRACKET        reduce using rule 38 (expression -> lvalue .)
+    LBRACE          reduce using rule 38 (expression -> lvalue .)
+
+
+state 24
+
+    (9) statement -> WHILE comparison . suite
+    (4) suite -> . NEWLINE statement
+    (5) suite -> . newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty
+    (10) newLineOrEmpty -> . NEWLINE newLineOrEmpty
+    (11) newLineOrEmpty -> .
+
+    NEWLINE         shift and go to state 38
+    LBRACE          reduce using rule 11 (newLineOrEmpty -> .)
+
+    suite                          shift and go to state 46
+    newLineOrEmpty                 shift and go to state 39
+
+state 25
+
+    (12) statement -> FUNCTION ID . LPAREN paramList RPAREN suite
+
+    LPAREN          shift and go to state 47
+
+
+state 26
 
     (41) lvalue -> ID LBRACKET . indexList RBRACKET
     (42) indexList -> . indexes
@@ -712,18 +643,18 @@ state 29
     (41) lvalue -> . ID LBRACKET indexList RBRACKET
 
     RBRACKET        reduce using rule 43 (indexList -> .)
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
 
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 52
-    indexList                      shift and go to state 50
-    indexes                        shift and go to state 51
+    indexList                      shift and go to state 48
+    indexes                        shift and go to state 49
+    expression                     shift and go to state 50
+    lvalue                         shift and go to state 23
 
-state 30
+state 27
 
     (32) expression -> ID LPAREN . argList RPAREN
     (33) argList -> . args
@@ -744,35 +675,35 @@ state 30
     (41) lvalue -> . ID LBRACKET indexList RBRACKET
 
     RPAREN          reduce using rule 34 (argList -> .)
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
 
-    lvalue                         shift and go to state 20
-    argList                        shift and go to state 54
-    expression                     shift and go to state 55
-    args                           shift and go to state 53
+    argList                        shift and go to state 51
+    args                           shift and go to state 52
+    expression                     shift and go to state 53
+    lvalue                         shift and go to state 23
 
-state 31
+state 28
 
-    (7) statement -> IF comparison . suite
-    (8) statement -> IF comparison . suite ELSE suite
-    (4) suite -> . NEWLINE statement
-    (5) suite -> . newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty
-    (10) newLineOrEmpty -> . NEWLINE newLineOrEmpty
-    (11) newLineOrEmpty -> .
+    (31) expression -> LPAREN expression . RPAREN
+    (26) expression -> expression . PLUS expression
+    (27) expression -> expression . MINUS expression
+    (28) expression -> expression . TIMES expression
+    (29) expression -> expression . DIVIDE expression
 
-    NEWLINE         shift and go to state 38
-    LBRACE          reduce using rule 11 (newLineOrEmpty -> .)
+    RPAREN          shift and go to state 54
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
 
-    newLineOrEmpty                 shift and go to state 39
-    suite                          shift and go to state 56
 
-state 32
+state 29
 
-    (29) expression -> expression DIVIDE . expression
+    (13) statement -> lvalue EQUALS . expression NEWLINE
     (26) expression -> . expression PLUS expression
     (27) expression -> . expression MINUS expression
     (28) expression -> . expression TIMES expression
@@ -786,16 +717,16 @@ state 32
     (40) lvalue -> . ID
     (41) lvalue -> . ID LBRACKET indexList RBRACKET
 
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
 
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 57
+    lvalue                         shift and go to state 23
+    expression                     shift and go to state 55
 
-state 33
+state 30
 
     (15) statement -> expression NEWLINE .
 
@@ -814,32 +745,7 @@ state 33
     ELSE            reduce using rule 15 (statement -> expression NEWLINE .)
 
 
-state 34
-
-    (28) expression -> expression TIMES . expression
-    (26) expression -> . expression PLUS expression
-    (27) expression -> . expression MINUS expression
-    (28) expression -> . expression TIMES expression
-    (29) expression -> . expression DIVIDE expression
-    (30) expression -> . MINUS expression
-    (31) expression -> . LPAREN expression RPAREN
-    (32) expression -> . ID LPAREN argList RPAREN
-    (37) expression -> . NUMBER
-    (38) expression -> . lvalue
-    (39) expression -> . LITERAL
-    (40) lvalue -> . ID
-    (41) lvalue -> . ID LBRACKET indexList RBRACKET
-
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
-
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 58
-
-state 35
+state 31
 
     (26) expression -> expression PLUS . expression
     (26) expression -> . expression PLUS expression
@@ -855,16 +761,16 @@ state 35
     (40) lvalue -> . ID
     (41) lvalue -> . ID LBRACKET indexList RBRACKET
 
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
 
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 59
+    expression                     shift and go to state 56
+    lvalue                         shift and go to state 23
 
-state 36
+state 32
 
     (27) expression -> expression MINUS . expression
     (26) expression -> . expression PLUS expression
@@ -880,32 +786,131 @@ state 36
     (40) lvalue -> . ID
     (41) lvalue -> . ID LBRACKET indexList RBRACKET
 
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
 
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 60
+    expression                     shift and go to state 57
+    lvalue                         shift and go to state 23
+
+state 33
+
+    (28) expression -> expression TIMES . expression
+    (26) expression -> . expression PLUS expression
+    (27) expression -> . expression MINUS expression
+    (28) expression -> . expression TIMES expression
+    (29) expression -> . expression DIVIDE expression
+    (30) expression -> . MINUS expression
+    (31) expression -> . LPAREN expression RPAREN
+    (32) expression -> . ID LPAREN argList RPAREN
+    (37) expression -> . NUMBER
+    (38) expression -> . lvalue
+    (39) expression -> . LITERAL
+    (40) lvalue -> . ID
+    (41) lvalue -> . ID LBRACKET indexList RBRACKET
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
+
+    expression                     shift and go to state 58
+    lvalue                         shift and go to state 23
+
+state 34
+
+    (29) expression -> expression DIVIDE . expression
+    (26) expression -> . expression PLUS expression
+    (27) expression -> . expression MINUS expression
+    (28) expression -> . expression TIMES expression
+    (29) expression -> . expression DIVIDE expression
+    (30) expression -> . MINUS expression
+    (31) expression -> . LPAREN expression RPAREN
+    (32) expression -> . ID LPAREN argList RPAREN
+    (37) expression -> . NUMBER
+    (38) expression -> . lvalue
+    (39) expression -> . LITERAL
+    (40) lvalue -> . ID
+    (41) lvalue -> . ID LBRACKET indexList RBRACKET
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
+
+    expression                     shift and go to state 59
+    lvalue                         shift and go to state 23
+
+state 35
+
+    (14) statement -> RETURN expression . NEWLINE
+    (26) expression -> expression . PLUS expression
+    (27) expression -> expression . MINUS expression
+    (28) expression -> expression . TIMES expression
+    (29) expression -> expression . DIVIDE expression
+
+    NEWLINE         shift and go to state 60
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+
+
+state 36
+
+    (30) expression -> MINUS expression .
+    (26) expression -> expression . PLUS expression
+    (27) expression -> expression . MINUS expression
+    (28) expression -> expression . TIMES expression
+    (29) expression -> expression . DIVIDE expression
+
+    NEWLINE         reduce using rule 30 (expression -> MINUS expression .)
+    PLUS            reduce using rule 30 (expression -> MINUS expression .)
+    MINUS           reduce using rule 30 (expression -> MINUS expression .)
+    TIMES           reduce using rule 30 (expression -> MINUS expression .)
+    DIVIDE          reduce using rule 30 (expression -> MINUS expression .)
+    EQ              reduce using rule 30 (expression -> MINUS expression .)
+    NE              reduce using rule 30 (expression -> MINUS expression .)
+    GT              reduce using rule 30 (expression -> MINUS expression .)
+    GE              reduce using rule 30 (expression -> MINUS expression .)
+    LT              reduce using rule 30 (expression -> MINUS expression .)
+    LE              reduce using rule 30 (expression -> MINUS expression .)
+    RPAREN          reduce using rule 30 (expression -> MINUS expression .)
+    COMMA           reduce using rule 30 (expression -> MINUS expression .)
+    RBRACKET        reduce using rule 30 (expression -> MINUS expression .)
+    LBRACE          reduce using rule 30 (expression -> MINUS expression .)
+
+  ! PLUS            [ shift and go to state 31 ]
+  ! MINUS           [ shift and go to state 32 ]
+  ! TIMES           [ shift and go to state 33 ]
+  ! DIVIDE          [ shift and go to state 34 ]
+
 
 state 37
 
-    (14) statement -> RETURN expression NEWLINE .
+    (7) statement -> IF comparison suite .
+    (8) statement -> IF comparison suite . ELSE suite
 
-    NEWLINE         reduce using rule 14 (statement -> RETURN expression NEWLINE .)
-    IF              reduce using rule 14 (statement -> RETURN expression NEWLINE .)
-    WHILE           reduce using rule 14 (statement -> RETURN expression NEWLINE .)
-    FUNCTION        reduce using rule 14 (statement -> RETURN expression NEWLINE .)
-    RETURN          reduce using rule 14 (statement -> RETURN expression NEWLINE .)
-    ID              reduce using rule 14 (statement -> RETURN expression NEWLINE .)
-    MINUS           reduce using rule 14 (statement -> RETURN expression NEWLINE .)
-    LPAREN          reduce using rule 14 (statement -> RETURN expression NEWLINE .)
-    NUMBER          reduce using rule 14 (statement -> RETURN expression NEWLINE .)
-    LITERAL         reduce using rule 14 (statement -> RETURN expression NEWLINE .)
-    $end            reduce using rule 14 (statement -> RETURN expression NEWLINE .)
-    RBRACE          reduce using rule 14 (statement -> RETURN expression NEWLINE .)
-    ELSE            reduce using rule 14 (statement -> RETURN expression NEWLINE .)
+  ! shift/reduce conflict for ELSE resolved as shift
+    NEWLINE         reduce using rule 7 (statement -> IF comparison suite .)
+    IF              reduce using rule 7 (statement -> IF comparison suite .)
+    WHILE           reduce using rule 7 (statement -> IF comparison suite .)
+    FUNCTION        reduce using rule 7 (statement -> IF comparison suite .)
+    RETURN          reduce using rule 7 (statement -> IF comparison suite .)
+    ID              reduce using rule 7 (statement -> IF comparison suite .)
+    MINUS           reduce using rule 7 (statement -> IF comparison suite .)
+    LPAREN          reduce using rule 7 (statement -> IF comparison suite .)
+    NUMBER          reduce using rule 7 (statement -> IF comparison suite .)
+    LITERAL         reduce using rule 7 (statement -> IF comparison suite .)
+    $end            reduce using rule 7 (statement -> IF comparison suite .)
+    RBRACE          reduce using rule 7 (statement -> IF comparison suite .)
+    ELSE            shift and go to state 61
+
+  ! ELSE            [ reduce using rule 7 (statement -> IF comparison suite .) ]
 
 
 state 38
@@ -934,31 +939,181 @@ state 38
     (38) expression -> . lvalue
     (39) expression -> . LITERAL
 
-    IF              shift and go to state 18
-    WHILE           shift and go to state 10
-    FUNCTION        shift and go to state 13
-    RETURN          shift and go to state 8
-    NEWLINE         shift and go to state 3
+    IF              shift and go to state 8
+    WHILE           shift and go to state 9
+    FUNCTION        shift and go to state 10
+    RETURN          shift and go to state 15
+    NEWLINE         shift and go to state 5
     LBRACE          reduce using rule 11 (newLineOrEmpty -> .)
-    ID              shift and go to state 17
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
+    ID              shift and go to state 11
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
 
-    statement                      shift and go to state 61
-    lvalue                         shift and go to state 12
-    newLineOrEmpty                 shift and go to state 6
-    expression                     shift and go to state 19
+    statement                      shift and go to state 62
+    newLineOrEmpty                 shift and go to state 19
+    lvalue                         shift and go to state 13
+    expression                     shift and go to state 14
 
 state 39
 
     (5) suite -> newLineOrEmpty . LBRACE stmts RBRACE newLineOrEmpty
 
-    LBRACE          shift and go to state 62
+    LBRACE          shift and go to state 63
 
 
 state 40
+
+    (20) comparison -> expression EQ . expression
+    (26) expression -> . expression PLUS expression
+    (27) expression -> . expression MINUS expression
+    (28) expression -> . expression TIMES expression
+    (29) expression -> . expression DIVIDE expression
+    (30) expression -> . MINUS expression
+    (31) expression -> . LPAREN expression RPAREN
+    (32) expression -> . ID LPAREN argList RPAREN
+    (37) expression -> . NUMBER
+    (38) expression -> . lvalue
+    (39) expression -> . LITERAL
+    (40) lvalue -> . ID
+    (41) lvalue -> . ID LBRACKET indexList RBRACKET
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
+
+    expression                     shift and go to state 64
+    lvalue                         shift and go to state 23
+
+state 41
+
+    (21) comparison -> expression NE . expression
+    (26) expression -> . expression PLUS expression
+    (27) expression -> . expression MINUS expression
+    (28) expression -> . expression TIMES expression
+    (29) expression -> . expression DIVIDE expression
+    (30) expression -> . MINUS expression
+    (31) expression -> . LPAREN expression RPAREN
+    (32) expression -> . ID LPAREN argList RPAREN
+    (37) expression -> . NUMBER
+    (38) expression -> . lvalue
+    (39) expression -> . LITERAL
+    (40) lvalue -> . ID
+    (41) lvalue -> . ID LBRACKET indexList RBRACKET
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
+
+    expression                     shift and go to state 65
+    lvalue                         shift and go to state 23
+
+state 42
+
+    (22) comparison -> expression GT . expression
+    (26) expression -> . expression PLUS expression
+    (27) expression -> . expression MINUS expression
+    (28) expression -> . expression TIMES expression
+    (29) expression -> . expression DIVIDE expression
+    (30) expression -> . MINUS expression
+    (31) expression -> . LPAREN expression RPAREN
+    (32) expression -> . ID LPAREN argList RPAREN
+    (37) expression -> . NUMBER
+    (38) expression -> . lvalue
+    (39) expression -> . LITERAL
+    (40) lvalue -> . ID
+    (41) lvalue -> . ID LBRACKET indexList RBRACKET
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
+
+    expression                     shift and go to state 66
+    lvalue                         shift and go to state 23
+
+state 43
+
+    (23) comparison -> expression GE . expression
+    (26) expression -> . expression PLUS expression
+    (27) expression -> . expression MINUS expression
+    (28) expression -> . expression TIMES expression
+    (29) expression -> . expression DIVIDE expression
+    (30) expression -> . MINUS expression
+    (31) expression -> . LPAREN expression RPAREN
+    (32) expression -> . ID LPAREN argList RPAREN
+    (37) expression -> . NUMBER
+    (38) expression -> . lvalue
+    (39) expression -> . LITERAL
+    (40) lvalue -> . ID
+    (41) lvalue -> . ID LBRACKET indexList RBRACKET
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
+
+    expression                     shift and go to state 67
+    lvalue                         shift and go to state 23
+
+state 44
+
+    (24) comparison -> expression LT . expression
+    (26) expression -> . expression PLUS expression
+    (27) expression -> . expression MINUS expression
+    (28) expression -> . expression TIMES expression
+    (29) expression -> . expression DIVIDE expression
+    (30) expression -> . MINUS expression
+    (31) expression -> . LPAREN expression RPAREN
+    (32) expression -> . ID LPAREN argList RPAREN
+    (37) expression -> . NUMBER
+    (38) expression -> . lvalue
+    (39) expression -> . LITERAL
+    (40) lvalue -> . ID
+    (41) lvalue -> . ID LBRACKET indexList RBRACKET
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
+
+    expression                     shift and go to state 68
+    lvalue                         shift and go to state 23
+
+state 45
+
+    (25) comparison -> expression LE . expression
+    (26) expression -> . expression PLUS expression
+    (27) expression -> . expression MINUS expression
+    (28) expression -> . expression TIMES expression
+    (29) expression -> . expression DIVIDE expression
+    (30) expression -> . MINUS expression
+    (31) expression -> . LPAREN expression RPAREN
+    (32) expression -> . ID LPAREN argList RPAREN
+    (37) expression -> . NUMBER
+    (38) expression -> . lvalue
+    (39) expression -> . LITERAL
+    (40) lvalue -> . ID
+    (41) lvalue -> . ID LBRACKET indexList RBRACKET
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
+
+    expression                     shift and go to state 69
+    lvalue                         shift and go to state 23
+
+state 46
 
     (9) statement -> WHILE comparison suite .
 
@@ -977,172 +1132,7 @@ state 40
     ELSE            reduce using rule 9 (statement -> WHILE comparison suite .)
 
 
-state 41
-
-    (22) comparison -> expression GT . expression
-    (26) expression -> . expression PLUS expression
-    (27) expression -> . expression MINUS expression
-    (28) expression -> . expression TIMES expression
-    (29) expression -> . expression DIVIDE expression
-    (30) expression -> . MINUS expression
-    (31) expression -> . LPAREN expression RPAREN
-    (32) expression -> . ID LPAREN argList RPAREN
-    (37) expression -> . NUMBER
-    (38) expression -> . lvalue
-    (39) expression -> . LITERAL
-    (40) lvalue -> . ID
-    (41) lvalue -> . ID LBRACKET indexList RBRACKET
-
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
-
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 63
-
-state 42
-
-    (21) comparison -> expression NE . expression
-    (26) expression -> . expression PLUS expression
-    (27) expression -> . expression MINUS expression
-    (28) expression -> . expression TIMES expression
-    (29) expression -> . expression DIVIDE expression
-    (30) expression -> . MINUS expression
-    (31) expression -> . LPAREN expression RPAREN
-    (32) expression -> . ID LPAREN argList RPAREN
-    (37) expression -> . NUMBER
-    (38) expression -> . lvalue
-    (39) expression -> . LITERAL
-    (40) lvalue -> . ID
-    (41) lvalue -> . ID LBRACKET indexList RBRACKET
-
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
-
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 64
-
-state 43
-
-    (24) comparison -> expression LT . expression
-    (26) expression -> . expression PLUS expression
-    (27) expression -> . expression MINUS expression
-    (28) expression -> . expression TIMES expression
-    (29) expression -> . expression DIVIDE expression
-    (30) expression -> . MINUS expression
-    (31) expression -> . LPAREN expression RPAREN
-    (32) expression -> . ID LPAREN argList RPAREN
-    (37) expression -> . NUMBER
-    (38) expression -> . lvalue
-    (39) expression -> . LITERAL
-    (40) lvalue -> . ID
-    (41) lvalue -> . ID LBRACKET indexList RBRACKET
-
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
-
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 65
-
-state 44
-
-    (23) comparison -> expression GE . expression
-    (26) expression -> . expression PLUS expression
-    (27) expression -> . expression MINUS expression
-    (28) expression -> . expression TIMES expression
-    (29) expression -> . expression DIVIDE expression
-    (30) expression -> . MINUS expression
-    (31) expression -> . LPAREN expression RPAREN
-    (32) expression -> . ID LPAREN argList RPAREN
-    (37) expression -> . NUMBER
-    (38) expression -> . lvalue
-    (39) expression -> . LITERAL
-    (40) lvalue -> . ID
-    (41) lvalue -> . ID LBRACKET indexList RBRACKET
-
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
-
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 66
-
-state 45
-
-    (25) comparison -> expression LE . expression
-    (26) expression -> . expression PLUS expression
-    (27) expression -> . expression MINUS expression
-    (28) expression -> . expression TIMES expression
-    (29) expression -> . expression DIVIDE expression
-    (30) expression -> . MINUS expression
-    (31) expression -> . LPAREN expression RPAREN
-    (32) expression -> . ID LPAREN argList RPAREN
-    (37) expression -> . NUMBER
-    (38) expression -> . lvalue
-    (39) expression -> . LITERAL
-    (40) lvalue -> . ID
-    (41) lvalue -> . ID LBRACKET indexList RBRACKET
-
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
-
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 67
-
-state 46
-
-    (20) comparison -> expression EQ . expression
-    (26) expression -> . expression PLUS expression
-    (27) expression -> . expression MINUS expression
-    (28) expression -> . expression TIMES expression
-    (29) expression -> . expression DIVIDE expression
-    (30) expression -> . MINUS expression
-    (31) expression -> . LPAREN expression RPAREN
-    (32) expression -> . ID LPAREN argList RPAREN
-    (37) expression -> . NUMBER
-    (38) expression -> . lvalue
-    (39) expression -> . LITERAL
-    (40) lvalue -> . ID
-    (41) lvalue -> . ID LBRACKET indexList RBRACKET
-
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
-
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 68
-
 state 47
-
-    (13) statement -> lvalue EQUALS expression . NEWLINE
-    (26) expression -> expression . PLUS expression
-    (27) expression -> expression . MINUS expression
-    (28) expression -> expression . TIMES expression
-    (29) expression -> expression . DIVIDE expression
-
-    NEWLINE         shift and go to state 69
-    PLUS            shift and go to state 35
-    MINUS           shift and go to state 36
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 32
-
-
-state 48
 
     (12) statement -> FUNCTION ID LPAREN . paramList RPAREN suite
     (16) paramList -> . params
@@ -1151,47 +1141,26 @@ state 48
     (19) params -> . ID
 
     RPAREN          reduce using rule 17 (paramList -> .)
-    ID              shift and go to state 72
+    ID              shift and go to state 70
 
-    params                         shift and go to state 71
-    paramList                      shift and go to state 70
+    paramList                      shift and go to state 71
+    params                         shift and go to state 72
 
-state 49
-
-    (31) expression -> LPAREN expression RPAREN .
-
-    NEWLINE         reduce using rule 31 (expression -> LPAREN expression RPAREN .)
-    PLUS            reduce using rule 31 (expression -> LPAREN expression RPAREN .)
-    MINUS           reduce using rule 31 (expression -> LPAREN expression RPAREN .)
-    TIMES           reduce using rule 31 (expression -> LPAREN expression RPAREN .)
-    DIVIDE          reduce using rule 31 (expression -> LPAREN expression RPAREN .)
-    LBRACE          reduce using rule 31 (expression -> LPAREN expression RPAREN .)
-    EQ              reduce using rule 31 (expression -> LPAREN expression RPAREN .)
-    NE              reduce using rule 31 (expression -> LPAREN expression RPAREN .)
-    GT              reduce using rule 31 (expression -> LPAREN expression RPAREN .)
-    GE              reduce using rule 31 (expression -> LPAREN expression RPAREN .)
-    LT              reduce using rule 31 (expression -> LPAREN expression RPAREN .)
-    LE              reduce using rule 31 (expression -> LPAREN expression RPAREN .)
-    RPAREN          reduce using rule 31 (expression -> LPAREN expression RPAREN .)
-    COMMA           reduce using rule 31 (expression -> LPAREN expression RPAREN .)
-    RBRACKET        reduce using rule 31 (expression -> LPAREN expression RPAREN .)
-
-
-state 50
+state 48
 
     (41) lvalue -> ID LBRACKET indexList . RBRACKET
 
     RBRACKET        shift and go to state 73
 
 
-state 51
+state 49
 
     (42) indexList -> indexes .
 
     RBRACKET        reduce using rule 42 (indexList -> indexes .)
 
 
-state 52
+state 50
 
     (44) indexes -> expression . COMMA indexes
     (45) indexes -> expression .
@@ -1202,27 +1171,27 @@ state 52
 
     COMMA           shift and go to state 74
     RBRACKET        reduce using rule 45 (indexes -> expression .)
-    PLUS            shift and go to state 35
-    MINUS           shift and go to state 36
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 32
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
 
 
-state 53
-
-    (33) argList -> args .
-
-    RPAREN          reduce using rule 33 (argList -> args .)
-
-
-state 54
+state 51
 
     (32) expression -> ID LPAREN argList . RPAREN
 
     RPAREN          shift and go to state 75
 
 
-state 55
+state 52
+
+    (33) argList -> args .
+
+    RPAREN          reduce using rule 33 (argList -> args .)
+
+
+state 53
 
     (35) args -> expression . COMMA args
     (36) args -> expression .
@@ -1233,63 +1202,106 @@ state 55
 
     COMMA           shift and go to state 76
     RPAREN          reduce using rule 36 (args -> expression .)
-    PLUS            shift and go to state 35
-    MINUS           shift and go to state 36
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 32
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
 
 
-state 56
+state 54
 
-    (7) statement -> IF comparison suite .
-    (8) statement -> IF comparison suite . ELSE suite
+    (31) expression -> LPAREN expression RPAREN .
 
-  ! shift/reduce conflict for ELSE resolved as shift
-    NEWLINE         reduce using rule 7 (statement -> IF comparison suite .)
-    IF              reduce using rule 7 (statement -> IF comparison suite .)
-    WHILE           reduce using rule 7 (statement -> IF comparison suite .)
-    FUNCTION        reduce using rule 7 (statement -> IF comparison suite .)
-    RETURN          reduce using rule 7 (statement -> IF comparison suite .)
-    ID              reduce using rule 7 (statement -> IF comparison suite .)
-    MINUS           reduce using rule 7 (statement -> IF comparison suite .)
-    LPAREN          reduce using rule 7 (statement -> IF comparison suite .)
-    NUMBER          reduce using rule 7 (statement -> IF comparison suite .)
-    LITERAL         reduce using rule 7 (statement -> IF comparison suite .)
-    $end            reduce using rule 7 (statement -> IF comparison suite .)
-    RBRACE          reduce using rule 7 (statement -> IF comparison suite .)
-    ELSE            shift and go to state 77
-
-  ! ELSE            [ reduce using rule 7 (statement -> IF comparison suite .) ]
+    NEWLINE         reduce using rule 31 (expression -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 31 (expression -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 31 (expression -> LPAREN expression RPAREN .)
+    TIMES           reduce using rule 31 (expression -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 31 (expression -> LPAREN expression RPAREN .)
+    EQ              reduce using rule 31 (expression -> LPAREN expression RPAREN .)
+    NE              reduce using rule 31 (expression -> LPAREN expression RPAREN .)
+    GT              reduce using rule 31 (expression -> LPAREN expression RPAREN .)
+    GE              reduce using rule 31 (expression -> LPAREN expression RPAREN .)
+    LT              reduce using rule 31 (expression -> LPAREN expression RPAREN .)
+    LE              reduce using rule 31 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 31 (expression -> LPAREN expression RPAREN .)
+    COMMA           reduce using rule 31 (expression -> LPAREN expression RPAREN .)
+    RBRACKET        reduce using rule 31 (expression -> LPAREN expression RPAREN .)
+    LBRACE          reduce using rule 31 (expression -> LPAREN expression RPAREN .)
 
 
-state 57
+state 55
 
-    (29) expression -> expression DIVIDE expression .
+    (13) statement -> lvalue EQUALS expression . NEWLINE
     (26) expression -> expression . PLUS expression
     (27) expression -> expression . MINUS expression
     (28) expression -> expression . TIMES expression
     (29) expression -> expression . DIVIDE expression
 
-    NEWLINE         reduce using rule 29 (expression -> expression DIVIDE expression .)
-    PLUS            reduce using rule 29 (expression -> expression DIVIDE expression .)
-    MINUS           reduce using rule 29 (expression -> expression DIVIDE expression .)
-    TIMES           reduce using rule 29 (expression -> expression DIVIDE expression .)
-    DIVIDE          reduce using rule 29 (expression -> expression DIVIDE expression .)
-    LBRACE          reduce using rule 29 (expression -> expression DIVIDE expression .)
-    EQ              reduce using rule 29 (expression -> expression DIVIDE expression .)
-    NE              reduce using rule 29 (expression -> expression DIVIDE expression .)
-    GT              reduce using rule 29 (expression -> expression DIVIDE expression .)
-    GE              reduce using rule 29 (expression -> expression DIVIDE expression .)
-    LT              reduce using rule 29 (expression -> expression DIVIDE expression .)
-    LE              reduce using rule 29 (expression -> expression DIVIDE expression .)
-    RPAREN          reduce using rule 29 (expression -> expression DIVIDE expression .)
-    COMMA           reduce using rule 29 (expression -> expression DIVIDE expression .)
-    RBRACKET        reduce using rule 29 (expression -> expression DIVIDE expression .)
+    NEWLINE         shift and go to state 77
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
 
-  ! PLUS            [ shift and go to state 35 ]
-  ! MINUS           [ shift and go to state 36 ]
-  ! TIMES           [ shift and go to state 34 ]
-  ! DIVIDE          [ shift and go to state 32 ]
+
+state 56
+
+    (26) expression -> expression PLUS expression .
+    (26) expression -> expression . PLUS expression
+    (27) expression -> expression . MINUS expression
+    (28) expression -> expression . TIMES expression
+    (29) expression -> expression . DIVIDE expression
+
+    NEWLINE         reduce using rule 26 (expression -> expression PLUS expression .)
+    PLUS            reduce using rule 26 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 26 (expression -> expression PLUS expression .)
+    EQ              reduce using rule 26 (expression -> expression PLUS expression .)
+    NE              reduce using rule 26 (expression -> expression PLUS expression .)
+    GT              reduce using rule 26 (expression -> expression PLUS expression .)
+    GE              reduce using rule 26 (expression -> expression PLUS expression .)
+    LT              reduce using rule 26 (expression -> expression PLUS expression .)
+    LE              reduce using rule 26 (expression -> expression PLUS expression .)
+    RPAREN          reduce using rule 26 (expression -> expression PLUS expression .)
+    COMMA           reduce using rule 26 (expression -> expression PLUS expression .)
+    RBRACKET        reduce using rule 26 (expression -> expression PLUS expression .)
+    LBRACE          reduce using rule 26 (expression -> expression PLUS expression .)
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+
+  ! TIMES           [ reduce using rule 26 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 26 (expression -> expression PLUS expression .) ]
+  ! PLUS            [ shift and go to state 31 ]
+  ! MINUS           [ shift and go to state 32 ]
+
+
+state 57
+
+    (27) expression -> expression MINUS expression .
+    (26) expression -> expression . PLUS expression
+    (27) expression -> expression . MINUS expression
+    (28) expression -> expression . TIMES expression
+    (29) expression -> expression . DIVIDE expression
+
+    NEWLINE         reduce using rule 27 (expression -> expression MINUS expression .)
+    PLUS            reduce using rule 27 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 27 (expression -> expression MINUS expression .)
+    EQ              reduce using rule 27 (expression -> expression MINUS expression .)
+    NE              reduce using rule 27 (expression -> expression MINUS expression .)
+    GT              reduce using rule 27 (expression -> expression MINUS expression .)
+    GE              reduce using rule 27 (expression -> expression MINUS expression .)
+    LT              reduce using rule 27 (expression -> expression MINUS expression .)
+    LE              reduce using rule 27 (expression -> expression MINUS expression .)
+    RPAREN          reduce using rule 27 (expression -> expression MINUS expression .)
+    COMMA           reduce using rule 27 (expression -> expression MINUS expression .)
+    RBRACKET        reduce using rule 27 (expression -> expression MINUS expression .)
+    LBRACE          reduce using rule 27 (expression -> expression MINUS expression .)
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+
+  ! TIMES           [ reduce using rule 27 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 27 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ shift and go to state 31 ]
+  ! MINUS           [ shift and go to state 32 ]
 
 
 state 58
@@ -1305,7 +1317,6 @@ state 58
     MINUS           reduce using rule 28 (expression -> expression TIMES expression .)
     TIMES           reduce using rule 28 (expression -> expression TIMES expression .)
     DIVIDE          reduce using rule 28 (expression -> expression TIMES expression .)
-    LBRACE          reduce using rule 28 (expression -> expression TIMES expression .)
     EQ              reduce using rule 28 (expression -> expression TIMES expression .)
     NE              reduce using rule 28 (expression -> expression TIMES expression .)
     GT              reduce using rule 28 (expression -> expression TIMES expression .)
@@ -1315,77 +1326,82 @@ state 58
     RPAREN          reduce using rule 28 (expression -> expression TIMES expression .)
     COMMA           reduce using rule 28 (expression -> expression TIMES expression .)
     RBRACKET        reduce using rule 28 (expression -> expression TIMES expression .)
+    LBRACE          reduce using rule 28 (expression -> expression TIMES expression .)
 
-  ! PLUS            [ shift and go to state 35 ]
-  ! MINUS           [ shift and go to state 36 ]
-  ! TIMES           [ shift and go to state 34 ]
-  ! DIVIDE          [ shift and go to state 32 ]
+  ! PLUS            [ shift and go to state 31 ]
+  ! MINUS           [ shift and go to state 32 ]
+  ! TIMES           [ shift and go to state 33 ]
+  ! DIVIDE          [ shift and go to state 34 ]
 
 
 state 59
 
-    (26) expression -> expression PLUS expression .
+    (29) expression -> expression DIVIDE expression .
     (26) expression -> expression . PLUS expression
     (27) expression -> expression . MINUS expression
     (28) expression -> expression . TIMES expression
     (29) expression -> expression . DIVIDE expression
 
-    NEWLINE         reduce using rule 26 (expression -> expression PLUS expression .)
-    PLUS            reduce using rule 26 (expression -> expression PLUS expression .)
-    MINUS           reduce using rule 26 (expression -> expression PLUS expression .)
-    LBRACE          reduce using rule 26 (expression -> expression PLUS expression .)
-    EQ              reduce using rule 26 (expression -> expression PLUS expression .)
-    NE              reduce using rule 26 (expression -> expression PLUS expression .)
-    GT              reduce using rule 26 (expression -> expression PLUS expression .)
-    GE              reduce using rule 26 (expression -> expression PLUS expression .)
-    LT              reduce using rule 26 (expression -> expression PLUS expression .)
-    LE              reduce using rule 26 (expression -> expression PLUS expression .)
-    RPAREN          reduce using rule 26 (expression -> expression PLUS expression .)
-    COMMA           reduce using rule 26 (expression -> expression PLUS expression .)
-    RBRACKET        reduce using rule 26 (expression -> expression PLUS expression .)
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 32
+    NEWLINE         reduce using rule 29 (expression -> expression DIVIDE expression .)
+    PLUS            reduce using rule 29 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 29 (expression -> expression DIVIDE expression .)
+    TIMES           reduce using rule 29 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 29 (expression -> expression DIVIDE expression .)
+    EQ              reduce using rule 29 (expression -> expression DIVIDE expression .)
+    NE              reduce using rule 29 (expression -> expression DIVIDE expression .)
+    GT              reduce using rule 29 (expression -> expression DIVIDE expression .)
+    GE              reduce using rule 29 (expression -> expression DIVIDE expression .)
+    LT              reduce using rule 29 (expression -> expression DIVIDE expression .)
+    LE              reduce using rule 29 (expression -> expression DIVIDE expression .)
+    RPAREN          reduce using rule 29 (expression -> expression DIVIDE expression .)
+    COMMA           reduce using rule 29 (expression -> expression DIVIDE expression .)
+    RBRACKET        reduce using rule 29 (expression -> expression DIVIDE expression .)
+    LBRACE          reduce using rule 29 (expression -> expression DIVIDE expression .)
 
-  ! TIMES           [ reduce using rule 26 (expression -> expression PLUS expression .) ]
-  ! DIVIDE          [ reduce using rule 26 (expression -> expression PLUS expression .) ]
-  ! PLUS            [ shift and go to state 35 ]
-  ! MINUS           [ shift and go to state 36 ]
+  ! PLUS            [ shift and go to state 31 ]
+  ! MINUS           [ shift and go to state 32 ]
+  ! TIMES           [ shift and go to state 33 ]
+  ! DIVIDE          [ shift and go to state 34 ]
 
 
 state 60
 
-    (27) expression -> expression MINUS expression .
-    (26) expression -> expression . PLUS expression
-    (27) expression -> expression . MINUS expression
-    (28) expression -> expression . TIMES expression
-    (29) expression -> expression . DIVIDE expression
+    (14) statement -> RETURN expression NEWLINE .
 
-    NEWLINE         reduce using rule 27 (expression -> expression MINUS expression .)
-    PLUS            reduce using rule 27 (expression -> expression MINUS expression .)
-    MINUS           reduce using rule 27 (expression -> expression MINUS expression .)
-    LBRACE          reduce using rule 27 (expression -> expression MINUS expression .)
-    EQ              reduce using rule 27 (expression -> expression MINUS expression .)
-    NE              reduce using rule 27 (expression -> expression MINUS expression .)
-    GT              reduce using rule 27 (expression -> expression MINUS expression .)
-    GE              reduce using rule 27 (expression -> expression MINUS expression .)
-    LT              reduce using rule 27 (expression -> expression MINUS expression .)
-    LE              reduce using rule 27 (expression -> expression MINUS expression .)
-    RPAREN          reduce using rule 27 (expression -> expression MINUS expression .)
-    COMMA           reduce using rule 27 (expression -> expression MINUS expression .)
-    RBRACKET        reduce using rule 27 (expression -> expression MINUS expression .)
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 32
-
-  ! TIMES           [ reduce using rule 27 (expression -> expression MINUS expression .) ]
-  ! DIVIDE          [ reduce using rule 27 (expression -> expression MINUS expression .) ]
-  ! PLUS            [ shift and go to state 35 ]
-  ! MINUS           [ shift and go to state 36 ]
+    NEWLINE         reduce using rule 14 (statement -> RETURN expression NEWLINE .)
+    IF              reduce using rule 14 (statement -> RETURN expression NEWLINE .)
+    WHILE           reduce using rule 14 (statement -> RETURN expression NEWLINE .)
+    FUNCTION        reduce using rule 14 (statement -> RETURN expression NEWLINE .)
+    RETURN          reduce using rule 14 (statement -> RETURN expression NEWLINE .)
+    ID              reduce using rule 14 (statement -> RETURN expression NEWLINE .)
+    MINUS           reduce using rule 14 (statement -> RETURN expression NEWLINE .)
+    LPAREN          reduce using rule 14 (statement -> RETURN expression NEWLINE .)
+    NUMBER          reduce using rule 14 (statement -> RETURN expression NEWLINE .)
+    LITERAL         reduce using rule 14 (statement -> RETURN expression NEWLINE .)
+    $end            reduce using rule 14 (statement -> RETURN expression NEWLINE .)
+    RBRACE          reduce using rule 14 (statement -> RETURN expression NEWLINE .)
+    ELSE            reduce using rule 14 (statement -> RETURN expression NEWLINE .)
 
 
 state 61
 
+    (8) statement -> IF comparison suite ELSE . suite
+    (4) suite -> . NEWLINE statement
+    (5) suite -> . newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty
+    (10) newLineOrEmpty -> . NEWLINE newLineOrEmpty
+    (11) newLineOrEmpty -> .
+
+    NEWLINE         shift and go to state 38
+    LBRACE          reduce using rule 11 (newLineOrEmpty -> .)
+
+    suite                          shift and go to state 78
+    newLineOrEmpty                 shift and go to state 39
+
+state 62
+
     (4) suite -> NEWLINE statement .
 
+    ELSE            reduce using rule 4 (suite -> NEWLINE statement .)
     NEWLINE         reduce using rule 4 (suite -> NEWLINE statement .)
     IF              reduce using rule 4 (suite -> NEWLINE statement .)
     WHILE           reduce using rule 4 (suite -> NEWLINE statement .)
@@ -1398,10 +1414,9 @@ state 61
     LITERAL         reduce using rule 4 (suite -> NEWLINE statement .)
     $end            reduce using rule 4 (suite -> NEWLINE statement .)
     RBRACE          reduce using rule 4 (suite -> NEWLINE statement .)
-    ELSE            reduce using rule 4 (suite -> NEWLINE statement .)
 
 
-state 62
+state 63
 
     (5) suite -> newLineOrEmpty LBRACE . stmts RBRACE newLineOrEmpty
     (2) stmts -> . stmt stmts
@@ -1410,7 +1425,7 @@ state 62
     (10) newLineOrEmpty -> . NEWLINE newLineOrEmpty
     (11) newLineOrEmpty -> .
 
-    NEWLINE         shift and go to state 3
+    NEWLINE         shift and go to state 5
     IF              reduce using rule 11 (newLineOrEmpty -> .)
     WHILE           reduce using rule 11 (newLineOrEmpty -> .)
     FUNCTION        reduce using rule 11 (newLineOrEmpty -> .)
@@ -1421,91 +1436,11 @@ state 62
     NUMBER          reduce using rule 11 (newLineOrEmpty -> .)
     LITERAL         reduce using rule 11 (newLineOrEmpty -> .)
 
-    newLineOrEmpty                 shift and go to state 5
-    stmts                          shift and go to state 78
-    stmt                           shift and go to state 4
-
-state 63
-
-    (22) comparison -> expression GT expression .
-    (26) expression -> expression . PLUS expression
-    (27) expression -> expression . MINUS expression
-    (28) expression -> expression . TIMES expression
-    (29) expression -> expression . DIVIDE expression
-
-    NEWLINE         reduce using rule 22 (comparison -> expression GT expression .)
-    LBRACE          reduce using rule 22 (comparison -> expression GT expression .)
-    PLUS            shift and go to state 35
-    MINUS           shift and go to state 36
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 32
-
+    newLineOrEmpty                 shift and go to state 4
+    stmts                          shift and go to state 79
+    stmt                           shift and go to state 3
 
 state 64
-
-    (21) comparison -> expression NE expression .
-    (26) expression -> expression . PLUS expression
-    (27) expression -> expression . MINUS expression
-    (28) expression -> expression . TIMES expression
-    (29) expression -> expression . DIVIDE expression
-
-    NEWLINE         reduce using rule 21 (comparison -> expression NE expression .)
-    LBRACE          reduce using rule 21 (comparison -> expression NE expression .)
-    PLUS            shift and go to state 35
-    MINUS           shift and go to state 36
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 32
-
-
-state 65
-
-    (24) comparison -> expression LT expression .
-    (26) expression -> expression . PLUS expression
-    (27) expression -> expression . MINUS expression
-    (28) expression -> expression . TIMES expression
-    (29) expression -> expression . DIVIDE expression
-
-    NEWLINE         reduce using rule 24 (comparison -> expression LT expression .)
-    LBRACE          reduce using rule 24 (comparison -> expression LT expression .)
-    PLUS            shift and go to state 35
-    MINUS           shift and go to state 36
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 32
-
-
-state 66
-
-    (23) comparison -> expression GE expression .
-    (26) expression -> expression . PLUS expression
-    (27) expression -> expression . MINUS expression
-    (28) expression -> expression . TIMES expression
-    (29) expression -> expression . DIVIDE expression
-
-    NEWLINE         reduce using rule 23 (comparison -> expression GE expression .)
-    LBRACE          reduce using rule 23 (comparison -> expression GE expression .)
-    PLUS            shift and go to state 35
-    MINUS           shift and go to state 36
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 32
-
-
-state 67
-
-    (25) comparison -> expression LE expression .
-    (26) expression -> expression . PLUS expression
-    (27) expression -> expression . MINUS expression
-    (28) expression -> expression . TIMES expression
-    (29) expression -> expression . DIVIDE expression
-
-    NEWLINE         reduce using rule 25 (comparison -> expression LE expression .)
-    LBRACE          reduce using rule 25 (comparison -> expression LE expression .)
-    PLUS            shift and go to state 35
-    MINUS           shift and go to state 36
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 32
-
-
-state 68
 
     (20) comparison -> expression EQ expression .
     (26) expression -> expression . PLUS expression
@@ -1515,46 +1450,93 @@ state 68
 
     NEWLINE         reduce using rule 20 (comparison -> expression EQ expression .)
     LBRACE          reduce using rule 20 (comparison -> expression EQ expression .)
-    PLUS            shift and go to state 35
-    MINUS           shift and go to state 36
-    TIMES           shift and go to state 34
-    DIVIDE          shift and go to state 32
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+
+
+state 65
+
+    (21) comparison -> expression NE expression .
+    (26) expression -> expression . PLUS expression
+    (27) expression -> expression . MINUS expression
+    (28) expression -> expression . TIMES expression
+    (29) expression -> expression . DIVIDE expression
+
+    NEWLINE         reduce using rule 21 (comparison -> expression NE expression .)
+    LBRACE          reduce using rule 21 (comparison -> expression NE expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+
+
+state 66
+
+    (22) comparison -> expression GT expression .
+    (26) expression -> expression . PLUS expression
+    (27) expression -> expression . MINUS expression
+    (28) expression -> expression . TIMES expression
+    (29) expression -> expression . DIVIDE expression
+
+    NEWLINE         reduce using rule 22 (comparison -> expression GT expression .)
+    LBRACE          reduce using rule 22 (comparison -> expression GT expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+
+
+state 67
+
+    (23) comparison -> expression GE expression .
+    (26) expression -> expression . PLUS expression
+    (27) expression -> expression . MINUS expression
+    (28) expression -> expression . TIMES expression
+    (29) expression -> expression . DIVIDE expression
+
+    NEWLINE         reduce using rule 23 (comparison -> expression GE expression .)
+    LBRACE          reduce using rule 23 (comparison -> expression GE expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+
+
+state 68
+
+    (24) comparison -> expression LT expression .
+    (26) expression -> expression . PLUS expression
+    (27) expression -> expression . MINUS expression
+    (28) expression -> expression . TIMES expression
+    (29) expression -> expression . DIVIDE expression
+
+    NEWLINE         reduce using rule 24 (comparison -> expression LT expression .)
+    LBRACE          reduce using rule 24 (comparison -> expression LT expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
 
 
 state 69
 
-    (13) statement -> lvalue EQUALS expression NEWLINE .
+    (25) comparison -> expression LE expression .
+    (26) expression -> expression . PLUS expression
+    (27) expression -> expression . MINUS expression
+    (28) expression -> expression . TIMES expression
+    (29) expression -> expression . DIVIDE expression
 
-    NEWLINE         reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
-    IF              reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
-    WHILE           reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
-    FUNCTION        reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
-    RETURN          reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
-    ID              reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
-    MINUS           reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
-    LPAREN          reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
-    NUMBER          reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
-    LITERAL         reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
-    $end            reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
-    RBRACE          reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
-    ELSE            reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
+    NEWLINE         reduce using rule 25 (comparison -> expression LE expression .)
+    LBRACE          reduce using rule 25 (comparison -> expression LE expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
 
 
 state 70
-
-    (12) statement -> FUNCTION ID LPAREN paramList . RPAREN suite
-
-    RPAREN          shift and go to state 79
-
-
-state 71
-
-    (16) paramList -> params .
-
-    RPAREN          reduce using rule 16 (paramList -> params .)
-
-
-state 72
 
     (18) params -> ID . COMMA params
     (19) params -> ID .
@@ -1563,26 +1545,40 @@ state 72
     RPAREN          reduce using rule 19 (params -> ID .)
 
 
+state 71
+
+    (12) statement -> FUNCTION ID LPAREN paramList . RPAREN suite
+
+    RPAREN          shift and go to state 81
+
+
+state 72
+
+    (16) paramList -> params .
+
+    RPAREN          reduce using rule 16 (paramList -> params .)
+
+
 state 73
 
     (41) lvalue -> ID LBRACKET indexList RBRACKET .
 
+    EQUALS          reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
+    NEWLINE         reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
     PLUS            reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
     MINUS           reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
     TIMES           reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
     DIVIDE          reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
-    NEWLINE         reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
-    LBRACE          reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
-    COMMA           reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
-    RPAREN          reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
     EQ              reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
     NE              reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
     GT              reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
     GE              reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
     LT              reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
     LE              reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
+    RPAREN          reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
+    COMMA           reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
     RBRACKET        reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
-    EQUALS          reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
+    LBRACE          reduce using rule 41 (lvalue -> ID LBRACKET indexList RBRACKET .)
 
 
 state 74
@@ -1603,15 +1599,15 @@ state 74
     (40) lvalue -> . ID
     (41) lvalue -> . ID LBRACKET indexList RBRACKET
 
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
 
-    lvalue                         shift and go to state 20
-    expression                     shift and go to state 52
-    indexes                        shift and go to state 81
+    expression                     shift and go to state 50
+    indexes                        shift and go to state 82
+    lvalue                         shift and go to state 23
 
 state 75
 
@@ -1622,7 +1618,6 @@ state 75
     MINUS           reduce using rule 32 (expression -> ID LPAREN argList RPAREN .)
     TIMES           reduce using rule 32 (expression -> ID LPAREN argList RPAREN .)
     DIVIDE          reduce using rule 32 (expression -> ID LPAREN argList RPAREN .)
-    LBRACE          reduce using rule 32 (expression -> ID LPAREN argList RPAREN .)
     EQ              reduce using rule 32 (expression -> ID LPAREN argList RPAREN .)
     NE              reduce using rule 32 (expression -> ID LPAREN argList RPAREN .)
     GT              reduce using rule 32 (expression -> ID LPAREN argList RPAREN .)
@@ -1632,6 +1627,7 @@ state 75
     RPAREN          reduce using rule 32 (expression -> ID LPAREN argList RPAREN .)
     COMMA           reduce using rule 32 (expression -> ID LPAREN argList RPAREN .)
     RBRACKET        reduce using rule 32 (expression -> ID LPAREN argList RPAREN .)
+    LBRACE          reduce using rule 32 (expression -> ID LPAREN argList RPAREN .)
 
 
 state 76
@@ -1652,76 +1648,36 @@ state 76
     (40) lvalue -> . ID
     (41) lvalue -> . ID LBRACKET indexList RBRACKET
 
-    MINUS           shift and go to state 11
-    LPAREN          shift and go to state 16
-    ID              shift and go to state 21
-    NUMBER          shift and go to state 9
-    LITERAL         shift and go to state 15
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 12
+    ID              shift and go to state 22
+    NUMBER          shift and go to state 17
+    LITERAL         shift and go to state 18
 
-    args                           shift and go to state 82
-    expression                     shift and go to state 55
-    lvalue                         shift and go to state 20
+    expression                     shift and go to state 53
+    args                           shift and go to state 83
+    lvalue                         shift and go to state 23
 
 state 77
 
-    (8) statement -> IF comparison suite ELSE . suite
-    (4) suite -> . NEWLINE statement
-    (5) suite -> . newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty
-    (10) newLineOrEmpty -> . NEWLINE newLineOrEmpty
-    (11) newLineOrEmpty -> .
+    (13) statement -> lvalue EQUALS expression NEWLINE .
 
-    NEWLINE         shift and go to state 38
-    LBRACE          reduce using rule 11 (newLineOrEmpty -> .)
+    NEWLINE         reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
+    IF              reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
+    WHILE           reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
+    FUNCTION        reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
+    RETURN          reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
+    ID              reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
+    MINUS           reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
+    LPAREN          reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
+    NUMBER          reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
+    LITERAL         reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
+    $end            reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
+    RBRACE          reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
+    ELSE            reduce using rule 13 (statement -> lvalue EQUALS expression NEWLINE .)
 
-    newLineOrEmpty                 shift and go to state 39
-    suite                          shift and go to state 83
 
 state 78
-
-    (5) suite -> newLineOrEmpty LBRACE stmts . RBRACE newLineOrEmpty
-
-    RBRACE          shift and go to state 84
-
-
-state 79
-
-    (12) statement -> FUNCTION ID LPAREN paramList RPAREN . suite
-    (4) suite -> . NEWLINE statement
-    (5) suite -> . newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty
-    (10) newLineOrEmpty -> . NEWLINE newLineOrEmpty
-    (11) newLineOrEmpty -> .
-
-    NEWLINE         shift and go to state 38
-    LBRACE          reduce using rule 11 (newLineOrEmpty -> .)
-
-    newLineOrEmpty                 shift and go to state 39
-    suite                          shift and go to state 85
-
-state 80
-
-    (18) params -> ID COMMA . params
-    (18) params -> . ID COMMA params
-    (19) params -> . ID
-
-    ID              shift and go to state 72
-
-    params                         shift and go to state 86
-
-state 81
-
-    (44) indexes -> expression COMMA indexes .
-
-    RBRACKET        reduce using rule 44 (indexes -> expression COMMA indexes .)
-
-
-state 82
-
-    (35) args -> expression COMMA args .
-
-    RPAREN          reduce using rule 35 (args -> expression COMMA args .)
-
-
-state 83
 
     (8) statement -> IF comparison suite ELSE suite .
 
@@ -1740,13 +1696,60 @@ state 83
     ELSE            reduce using rule 8 (statement -> IF comparison suite ELSE suite .)
 
 
+state 79
+
+    (5) suite -> newLineOrEmpty LBRACE stmts . RBRACE newLineOrEmpty
+
+    RBRACE          shift and go to state 84
+
+
+state 80
+
+    (18) params -> ID COMMA . params
+    (18) params -> . ID COMMA params
+    (19) params -> . ID
+
+    ID              shift and go to state 70
+
+    params                         shift and go to state 85
+
+state 81
+
+    (12) statement -> FUNCTION ID LPAREN paramList RPAREN . suite
+    (4) suite -> . NEWLINE statement
+    (5) suite -> . newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty
+    (10) newLineOrEmpty -> . NEWLINE newLineOrEmpty
+    (11) newLineOrEmpty -> .
+
+    NEWLINE         shift and go to state 38
+    LBRACE          reduce using rule 11 (newLineOrEmpty -> .)
+
+    suite                          shift and go to state 86
+    newLineOrEmpty                 shift and go to state 39
+
+state 82
+
+    (44) indexes -> expression COMMA indexes .
+
+    RBRACKET        reduce using rule 44 (indexes -> expression COMMA indexes .)
+
+
+state 83
+
+    (35) args -> expression COMMA args .
+
+    RPAREN          reduce using rule 35 (args -> expression COMMA args .)
+
+
 state 84
 
     (5) suite -> newLineOrEmpty LBRACE stmts RBRACE . newLineOrEmpty
     (10) newLineOrEmpty -> . NEWLINE newLineOrEmpty
     (11) newLineOrEmpty -> .
 
-    NEWLINE         shift and go to state 3
+  ! shift/reduce conflict for NEWLINE resolved as shift
+    NEWLINE         shift and go to state 5
+    ELSE            reduce using rule 11 (newLineOrEmpty -> .)
     IF              reduce using rule 11 (newLineOrEmpty -> .)
     WHILE           reduce using rule 11 (newLineOrEmpty -> .)
     FUNCTION        reduce using rule 11 (newLineOrEmpty -> .)
@@ -1758,13 +1761,19 @@ state 84
     LITERAL         reduce using rule 11 (newLineOrEmpty -> .)
     $end            reduce using rule 11 (newLineOrEmpty -> .)
     RBRACE          reduce using rule 11 (newLineOrEmpty -> .)
-    ELSE            reduce using rule 11 (newLineOrEmpty -> .)
 
   ! NEWLINE         [ reduce using rule 11 (newLineOrEmpty -> .) ]
 
     newLineOrEmpty                 shift and go to state 87
 
 state 85
+
+    (18) params -> ID COMMA params .
+
+    RPAREN          reduce using rule 18 (params -> ID COMMA params .)
+
+
+state 86
 
     (12) statement -> FUNCTION ID LPAREN paramList RPAREN suite .
 
@@ -1783,17 +1792,11 @@ state 85
     ELSE            reduce using rule 12 (statement -> FUNCTION ID LPAREN paramList RPAREN suite .)
 
 
-state 86
-
-    (18) params -> ID COMMA params .
-
-    RPAREN          reduce using rule 18 (params -> ID COMMA params .)
-
-
 state 87
 
     (5) suite -> newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty .
 
+    ELSE            reduce using rule 5 (suite -> newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty .)
     NEWLINE         reduce using rule 5 (suite -> newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty .)
     IF              reduce using rule 5 (suite -> newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty .)
     WHILE           reduce using rule 5 (suite -> newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty .)
@@ -1806,9 +1809,10 @@ state 87
     LITERAL         reduce using rule 5 (suite -> newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty .)
     $end            reduce using rule 5 (suite -> newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty .)
     RBRACE          reduce using rule 5 (suite -> newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty .)
-    ELSE            reduce using rule 5 (suite -> newLineOrEmpty LBRACE stmts RBRACE newLineOrEmpty .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for ELSE in state 56 resolved as shift
+WARNING: shift/reduce conflict for NEWLINE in state 5 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 37 resolved as shift
+WARNING: shift/reduce conflict for NEWLINE in state 84 resolved as shift

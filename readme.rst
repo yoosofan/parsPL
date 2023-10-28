@@ -4,7 +4,15 @@ This is my attempt to make a persian based programming language. It uses `PLY <h
 
 You can find my old bazaar (bzr) files in "old.bzr.folder" which includes all the changes of the source code in bzr system. Migrating to "git" took time, therefore, I consider making a new git branch.
 
-The ParsePL programming language has fantastic features and ideas that is designed to be easily used by a primary persian school student. It is not just a copy cat of another project or ideas.
+The ParsePL programming language has fantastic features and ideas that is designed to be easily used by a primary persian school student. It is not just a copy cat of another project or ideas. It is fully right to left language designed to be easily undestand by any Persian speaker.
+
+"test1.psl" can be opened by any modern editors like pluma or gedit in Linux which supports right to left languages automatically and shows the program right to left.
+
+Run a sample:
+
+.. code:: sh
+
+  python3 run.py test1.psl
 
 This project started at 2010 and fininshed in 2013.
 
