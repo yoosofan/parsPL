@@ -16,7 +16,7 @@ Run a sample:
 
 This project started at 2010 and fininshed in 2013.
 
-For more information about ParsPL language and its compiler you can read its Persian report in docs/report.fa.pdf
+For more information about ParsPL language and its compiler you can read its Persian report in `<docs/report.fa.pdf>`_
 
 I may not able to continue to work on this project and provide new update but I am ready to check and probably accept your useful request pulls.
 
