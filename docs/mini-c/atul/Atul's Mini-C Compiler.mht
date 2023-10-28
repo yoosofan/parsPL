@@ -1,0 +1,109 @@
+Content-Type: multipart/related; start=<op.mhtml.1361516893201.a3714b43394db206@192.168.1.101>; boundary=----------JRFObmilNC9GSzEN9s3LzX
+Content-Location: http://people.cs.uchicago.edu/~varmaa/mini_c/
+Subject: =?utf-8?Q?Atul's=20Mini-C=20Compiler?=
+MIME-Version: 1.0
+
+------------JRFObmilNC9GSzEN9s3LzX
+Content-Disposition: inline; filename=default.htm
+Content-Type: text/html; name=default.htm
+Content-ID: <op.mhtml.1361516893201.a3714b43394db206@192.168.1.101>
+Content-Location: http://people.cs.uchicago.edu/~varmaa/mini_c/
+Content-Transfer-Encoding: 8bit
+
+<HTML><HEAD><TITLE>Atul's Mini-C Compiler</TITLE></HEAD><BODY>
+<h1>Atul's Mini-C Compiler</h1>
+<I>June 2, 2004</I>
+<P>
+<A HREF="mini_c.tar.gz">Download the tarball.</A>
+<P>
+This is a compiler for a subset of the C programming language.  It was
+written in Python during the spring of 2004.
+<P>
+The lexer and parser were constructed using Dave Beazley's <A
+HREF="http://systems.cs.uchicago.edu/ply/">PLY</A> (Python Lex-Yacc),
+an open-source Python implementation of GNU lex/yacc.  Stages of
+compilation (symbol tree generation, type checking, flow control
+checking, etc) are performed using an object-oriented design pattern
+called a visitor (GoF 1995).  The output is annotated Intel 80x86
+assembly, suitable for translation to machine language using the
+GNU Assembler (GAS).
+<P>
+<B>Language Features</B>
+<P>
+The subset of the C language implemented here includes:
+<UL>
+<LI>Functions, variables (local and global), and character and string
+literals.</LI>
+<LI>Assignments (<TT>=</TT>, <TT>+=</TT>, etc), standard arithmetic
+binary and unary operators (<TT>+</TT>,<TT>-</TT>,<TT>*</TT>, etc),
+logical binary and unary operators (<TT>!</TT>, <TT>==</TT>,
+<TT>&lt;</TT>, etc).</LI>
+<LI>Support for the C datatypes <TT>char</TT> and <TT>int</TT>, as
+well as implicit type conversion between the two (warnings are raised
+in situations of potential data loss).  <TT>int</TT> variables are
+assumed to be signed, and <TT>char</TT> variables are assumed to be
+unsigned (this is not a violation of the ANSI C standard).</LI>
+<LI>Control flow elements including <TT>while</TT> and <TT>for</TT>
+loops, <TT>if/then/else</TT> conditionals, and recursion.</LI>
+<LI>Support for the C keywords <TT>extern</TT> for functions and
+variables, and <TT>static</TT> for functions.</LI>
+<LI>Pointers, including pointer dereferencing (the <TT>*</TT>
+operator), multiple levels of indirection (double pointers, triple
+pointers, etc), array indexing notation, and the address-of
+(<TT>&</TT>) operator.</LI>
+</UL>
+<B>What went right</B>
+<UL>
+<LI>The different stages of compilation are encapsulated in visitor
+classes, which (in my opinion) makes the code quite readable, and
+also made writing the compiler a lot easier.  The yacc rules merely
+generate the abstract syntax tree and visitors do the rest.</LI>
+<LI>The code generator is also a visitor, which makes the process
+very modular; for instance, although this compiler doesn't generate
+intermediate code (which is what most compilers that compile for
+different architectures use), one could simply write, say, a SPARC
+code generation visitor and run the AST through it to generate
+assembly for that architecture.  This separation also means that the
+rest of the compiler is independent of machine architecture.</LI>
+<LI>Writing the compiler in Python allowed me to focus entirely on the
+task at hand (compilation), without being distracted by issues of
+memory management and low-level data structure creation.  Using such a
+high-level language also made reading and refactoring the code a lot
+easier.</LI>
+</UL>
+<B>What went wrong</B>
+<UL>
+<LI>I didn't spend much time implementing feedback for syntax errors.
+But this is partially because I wasn't really writing it for people who
+were trying to learn C, so it wasn't a very high priority to begin
+with.  As it stands, syntax errors result in the following kind of
+message:
+<P>
+<QUOTE><TT>
+You've got a syntax error somewhere in your code.<BR>
+It could be around line 15.<BR>
+Good luck finding it.</TT></QUOTE>
+</LI>
+<LI>The x86 code generator is a little messy, although this is
+partially because writing x86 assembly in the first place is kind of
+messy.</LI>
+</UL>
+<B>Examples</B>
+<P>
+<A HREF="foo.c"><TT>foo.c</TT></A> - Example C source file that uses
+most of the language features of the compiler.
+<P>
+<A HREF="foo.ast"><TT>foo.ast</TT></A> - Printout of the compiler's
+abstract syntax tree for <TT>foo.c</TT> after all passes of
+compilation have been completed.
+<P>
+<A HREF="foo.s"><TT>foo.s</TT></A> - Annotated x86 assembly output of
+<TT>foo.c</TT>.
+<P>
+<B>Other Notes</B>
+<P>
+This software has been tested using Python 2.2 and Python 2.3 under
+Windows and Linux.
+</BODY></HTML>
+
+------------JRFObmilNC9GSzEN9s3LzX--

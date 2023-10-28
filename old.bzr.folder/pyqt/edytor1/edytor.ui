@@ -1,0 +1,80 @@
+<ui version="4.0" >
+ <class>notatnik</class>
+ <widget class="QMainWindow" name="notatnik" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>560</width>
+    <height>336</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Notatnik</string>
+  </property>
+  <widget class="QWidget" name="centralwidget" >
+   <layout class="QGridLayout" >
+    <property name="margin" >
+     <number>9</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item row="1" column="0" colspan="3" >
+     <widget class="QTextEdit" name="editor_window" />
+    </item>
+    <item row="0" column="2" >
+     <widget class="QPushButton" name="pushButton_2" >
+      <property name="text" >
+       <string>Zamknij</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1" >
+     <widget class="QPushButton" name="button_save" >
+      <property name="text" >
+       <string>Zapisz</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" >
+     <widget class="QPushButton" name="button_open" >
+      <property name="text" >
+       <string>Otwórz Plik</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>560</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar" />
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>notatnik</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>322</x>
+     <y>49</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>334</x>
+     <y>29</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

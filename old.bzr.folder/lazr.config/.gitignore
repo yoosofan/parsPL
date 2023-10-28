@@ -1,0 +1,13 @@
+bin
+develop-eggs
+.installed.cfg
+develop-eggs
+parts
+*.egg-info
+tags
+TAGS
+build
+*.egg
+dist
+.tox
+__pycache__

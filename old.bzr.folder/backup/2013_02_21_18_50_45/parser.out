@@ -1,0 +1,604 @@
+Created by PLY version 3.4 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> stmts
+Rule 1     stmts -> stmts stmt
+Rule 2     stmts -> stmt
+Rule 3     suite -> statement
+Rule 4     suite -> LBRACE stmts RBRACE
+Rule 5     stmt -> statement NEWLINE
+Rule 6     stmt -> statement
+Rule 7     statement -> ID EQUALS expression
+Rule 8     statement -> PRINT expression
+Rule 9     statement -> INPUT ID
+Rule 10    statement -> EXIT
+Rule 11    statement -> NEWLINE
+Rule 12    comparison -> expression EQ expression
+Rule 13    comparison -> expression NE expression
+Rule 14    comparison -> expression GT expression
+Rule 15    comparison -> expression GE expression
+Rule 16    comparison -> expression LT expression
+Rule 17    comparison -> expression LE expression
+Rule 18    expression -> expression PLUS expression
+Rule 19    expression -> expression MINUS expression
+Rule 20    expression -> expression TIMES expression
+Rule 21    expression -> expression DIVIDE expression
+Rule 22    expression -> MINUS expression
+Rule 23    expression -> LPAREN expression RPAREN
+Rule 24    expression -> NUMBER
+Rule 25    expression -> ID
+
+Terminals, with rules where they appear
+
+DIVIDE               : 21
+EQ                   : 12
+EQUALS               : 7
+EXIT                 : 10
+GE                   : 15
+GT                   : 14
+ID                   : 7 9 25
+INPUT                : 9
+LBRACE               : 4
+LE                   : 17
+LPAREN               : 23
+LT                   : 16
+MINUS                : 19 22
+NE                   : 13
+NEWLINE              : 5 11
+NUMBER               : 24
+PLUS                 : 18
+PRINT                : 8
+RBRACE               : 4
+RPAREN               : 23
+TIMES                : 20
+error                : 
+
+Nonterminals, with rules where they appear
+
+comparison           : 
+expression           : 7 8 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 19 20 20 21 21 22 23
+statement            : 3 5 6
+stmt                 : 1 2
+stmts                : 1 4 0
+suite                : 
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . stmts
+    (1) stmts -> . stmts stmt
+    (2) stmts -> . stmt
+    (5) stmt -> . statement NEWLINE
+    (6) stmt -> . statement
+    (7) statement -> . ID EQUALS expression
+    (8) statement -> . PRINT expression
+    (9) statement -> . INPUT ID
+    (10) statement -> . EXIT
+    (11) statement -> . NEWLINE
+
+    ID              shift and go to state 8
+    PRINT           shift and go to state 6
+    INPUT           shift and go to state 7
+    EXIT            shift and go to state 4
+    NEWLINE         shift and go to state 2
+
+    stmts                          shift and go to state 1
+    statement                      shift and go to state 5
+    stmt                           shift and go to state 3
+
+state 1
+
+    (0) S' -> stmts .
+    (1) stmts -> stmts . stmt
+    (5) stmt -> . statement NEWLINE
+    (6) stmt -> . statement
+    (7) statement -> . ID EQUALS expression
+    (8) statement -> . PRINT expression
+    (9) statement -> . INPUT ID
+    (10) statement -> . EXIT
+    (11) statement -> . NEWLINE
+
+    ID              shift and go to state 8
+    PRINT           shift and go to state 6
+    INPUT           shift and go to state 7
+    EXIT            shift and go to state 4
+    NEWLINE         shift and go to state 2
+
+    statement                      shift and go to state 5
+    stmt                           shift and go to state 9
+
+state 2
+
+    (11) statement -> NEWLINE .
+
+    NEWLINE         reduce using rule 11 (statement -> NEWLINE .)
+    ID              reduce using rule 11 (statement -> NEWLINE .)
+    PRINT           reduce using rule 11 (statement -> NEWLINE .)
+    INPUT           reduce using rule 11 (statement -> NEWLINE .)
+    EXIT            reduce using rule 11 (statement -> NEWLINE .)
+    $end            reduce using rule 11 (statement -> NEWLINE .)
+
+
+state 3
+
+    (2) stmts -> stmt .
+
+    ID              reduce using rule 2 (stmts -> stmt .)
+    PRINT           reduce using rule 2 (stmts -> stmt .)
+    INPUT           reduce using rule 2 (stmts -> stmt .)
+    EXIT            reduce using rule 2 (stmts -> stmt .)
+    NEWLINE         reduce using rule 2 (stmts -> stmt .)
+    $end            reduce using rule 2 (stmts -> stmt .)
+
+
+state 4
+
+    (10) statement -> EXIT .
+
+    NEWLINE         reduce using rule 10 (statement -> EXIT .)
+    ID              reduce using rule 10 (statement -> EXIT .)
+    PRINT           reduce using rule 10 (statement -> EXIT .)
+    INPUT           reduce using rule 10 (statement -> EXIT .)
+    EXIT            reduce using rule 10 (statement -> EXIT .)
+    $end            reduce using rule 10 (statement -> EXIT .)
+
+
+state 5
+
+    (5) stmt -> statement . NEWLINE
+    (6) stmt -> statement .
+
+  ! shift/reduce conflict for NEWLINE resolved as shift
+    NEWLINE         shift and go to state 10
+    ID              reduce using rule 6 (stmt -> statement .)
+    PRINT           reduce using rule 6 (stmt -> statement .)
+    INPUT           reduce using rule 6 (stmt -> statement .)
+    EXIT            reduce using rule 6 (stmt -> statement .)
+    $end            reduce using rule 6 (stmt -> statement .)
+
+  ! NEWLINE         [ reduce using rule 6 (stmt -> statement .) ]
+
+
+state 6
+
+    (8) statement -> PRINT . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMBER
+    (25) expression -> . ID
+
+    MINUS           shift and go to state 15
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 13
+
+    expression                     shift and go to state 14
+
+state 7
+
+    (9) statement -> INPUT . ID
+
+    ID              shift and go to state 16
+
+
+state 8
+
+    (7) statement -> ID . EQUALS expression
+
+    EQUALS          shift and go to state 17
+
+
+state 9
+
+    (1) stmts -> stmts stmt .
+
+    ID              reduce using rule 1 (stmts -> stmts stmt .)
+    PRINT           reduce using rule 1 (stmts -> stmts stmt .)
+    INPUT           reduce using rule 1 (stmts -> stmts stmt .)
+    EXIT            reduce using rule 1 (stmts -> stmts stmt .)
+    NEWLINE         reduce using rule 1 (stmts -> stmts stmt .)
+    $end            reduce using rule 1 (stmts -> stmts stmt .)
+
+
+state 10
+
+    (5) stmt -> statement NEWLINE .
+
+    ID              reduce using rule 5 (stmt -> statement NEWLINE .)
+    PRINT           reduce using rule 5 (stmt -> statement NEWLINE .)
+    INPUT           reduce using rule 5 (stmt -> statement NEWLINE .)
+    EXIT            reduce using rule 5 (stmt -> statement NEWLINE .)
+    NEWLINE         reduce using rule 5 (stmt -> statement NEWLINE .)
+    $end            reduce using rule 5 (stmt -> statement NEWLINE .)
+
+
+state 11
+
+    (24) expression -> NUMBER .
+
+    RPAREN          reduce using rule 24 (expression -> NUMBER .)
+    PLUS            reduce using rule 24 (expression -> NUMBER .)
+    MINUS           reduce using rule 24 (expression -> NUMBER .)
+    TIMES           reduce using rule 24 (expression -> NUMBER .)
+    DIVIDE          reduce using rule 24 (expression -> NUMBER .)
+    NEWLINE         reduce using rule 24 (expression -> NUMBER .)
+    ID              reduce using rule 24 (expression -> NUMBER .)
+    PRINT           reduce using rule 24 (expression -> NUMBER .)
+    INPUT           reduce using rule 24 (expression -> NUMBER .)
+    EXIT            reduce using rule 24 (expression -> NUMBER .)
+    $end            reduce using rule 24 (expression -> NUMBER .)
+
+
+state 12
+
+    (23) expression -> LPAREN . expression RPAREN
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMBER
+    (25) expression -> . ID
+
+    MINUS           shift and go to state 15
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 13
+
+    expression                     shift and go to state 18
+
+state 13
+
+    (25) expression -> ID .
+
+    RPAREN          reduce using rule 25 (expression -> ID .)
+    PLUS            reduce using rule 25 (expression -> ID .)
+    MINUS           reduce using rule 25 (expression -> ID .)
+    TIMES           reduce using rule 25 (expression -> ID .)
+    DIVIDE          reduce using rule 25 (expression -> ID .)
+    NEWLINE         reduce using rule 25 (expression -> ID .)
+    ID              reduce using rule 25 (expression -> ID .)
+    PRINT           reduce using rule 25 (expression -> ID .)
+    INPUT           reduce using rule 25 (expression -> ID .)
+    EXIT            reduce using rule 25 (expression -> ID .)
+    $end            reduce using rule 25 (expression -> ID .)
+
+
+state 14
+
+    (8) statement -> PRINT expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    NEWLINE         reduce using rule 8 (statement -> PRINT expression .)
+    ID              reduce using rule 8 (statement -> PRINT expression .)
+    PRINT           reduce using rule 8 (statement -> PRINT expression .)
+    INPUT           reduce using rule 8 (statement -> PRINT expression .)
+    EXIT            reduce using rule 8 (statement -> PRINT expression .)
+    $end            reduce using rule 8 (statement -> PRINT expression .)
+    PLUS            shift and go to state 21
+    MINUS           shift and go to state 22
+    TIMES           shift and go to state 20
+    DIVIDE          shift and go to state 19
+
+
+state 15
+
+    (22) expression -> MINUS . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMBER
+    (25) expression -> . ID
+
+    MINUS           shift and go to state 15
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 13
+
+    expression                     shift and go to state 23
+
+state 16
+
+    (9) statement -> INPUT ID .
+
+    NEWLINE         reduce using rule 9 (statement -> INPUT ID .)
+    ID              reduce using rule 9 (statement -> INPUT ID .)
+    PRINT           reduce using rule 9 (statement -> INPUT ID .)
+    INPUT           reduce using rule 9 (statement -> INPUT ID .)
+    EXIT            reduce using rule 9 (statement -> INPUT ID .)
+    $end            reduce using rule 9 (statement -> INPUT ID .)
+
+
+state 17
+
+    (7) statement -> ID EQUALS . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMBER
+    (25) expression -> . ID
+
+    MINUS           shift and go to state 15
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 13
+
+    expression                     shift and go to state 24
+
+state 18
+
+    (23) expression -> LPAREN expression . RPAREN
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    RPAREN          shift and go to state 25
+    PLUS            shift and go to state 21
+    MINUS           shift and go to state 22
+    TIMES           shift and go to state 20
+    DIVIDE          shift and go to state 19
+
+
+state 19
+
+    (21) expression -> expression DIVIDE . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMBER
+    (25) expression -> . ID
+
+    MINUS           shift and go to state 15
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 13
+
+    expression                     shift and go to state 26
+
+state 20
+
+    (20) expression -> expression TIMES . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMBER
+    (25) expression -> . ID
+
+    MINUS           shift and go to state 15
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 13
+
+    expression                     shift and go to state 27
+
+state 21
+
+    (18) expression -> expression PLUS . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMBER
+    (25) expression -> . ID
+
+    MINUS           shift and go to state 15
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 13
+
+    expression                     shift and go to state 28
+
+state 22
+
+    (19) expression -> expression MINUS . expression
+    (18) expression -> . expression PLUS expression
+    (19) expression -> . expression MINUS expression
+    (20) expression -> . expression TIMES expression
+    (21) expression -> . expression DIVIDE expression
+    (22) expression -> . MINUS expression
+    (23) expression -> . LPAREN expression RPAREN
+    (24) expression -> . NUMBER
+    (25) expression -> . ID
+
+    MINUS           shift and go to state 15
+    LPAREN          shift and go to state 12
+    NUMBER          shift and go to state 11
+    ID              shift and go to state 13
+
+    expression                     shift and go to state 29
+
+state 23
+
+    (22) expression -> MINUS expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    RPAREN          reduce using rule 22 (expression -> MINUS expression .)
+    PLUS            reduce using rule 22 (expression -> MINUS expression .)
+    MINUS           reduce using rule 22 (expression -> MINUS expression .)
+    TIMES           reduce using rule 22 (expression -> MINUS expression .)
+    DIVIDE          reduce using rule 22 (expression -> MINUS expression .)
+    NEWLINE         reduce using rule 22 (expression -> MINUS expression .)
+    ID              reduce using rule 22 (expression -> MINUS expression .)
+    PRINT           reduce using rule 22 (expression -> MINUS expression .)
+    INPUT           reduce using rule 22 (expression -> MINUS expression .)
+    EXIT            reduce using rule 22 (expression -> MINUS expression .)
+    $end            reduce using rule 22 (expression -> MINUS expression .)
+
+  ! PLUS            [ shift and go to state 21 ]
+  ! MINUS           [ shift and go to state 22 ]
+  ! TIMES           [ shift and go to state 20 ]
+  ! DIVIDE          [ shift and go to state 19 ]
+
+
+state 24
+
+    (7) statement -> ID EQUALS expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    NEWLINE         reduce using rule 7 (statement -> ID EQUALS expression .)
+    ID              reduce using rule 7 (statement -> ID EQUALS expression .)
+    PRINT           reduce using rule 7 (statement -> ID EQUALS expression .)
+    INPUT           reduce using rule 7 (statement -> ID EQUALS expression .)
+    EXIT            reduce using rule 7 (statement -> ID EQUALS expression .)
+    $end            reduce using rule 7 (statement -> ID EQUALS expression .)
+    PLUS            shift and go to state 21
+    MINUS           shift and go to state 22
+    TIMES           shift and go to state 20
+    DIVIDE          shift and go to state 19
+
+
+state 25
+
+    (23) expression -> LPAREN expression RPAREN .
+
+    RPAREN          reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    TIMES           reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    NEWLINE         reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    ID              reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    PRINT           reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    INPUT           reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    EXIT            reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+    $end            reduce using rule 23 (expression -> LPAREN expression RPAREN .)
+
+
+state 26
+
+    (21) expression -> expression DIVIDE expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    RPAREN          reduce using rule 21 (expression -> expression DIVIDE expression .)
+    PLUS            reduce using rule 21 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 21 (expression -> expression DIVIDE expression .)
+    TIMES           reduce using rule 21 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 21 (expression -> expression DIVIDE expression .)
+    NEWLINE         reduce using rule 21 (expression -> expression DIVIDE expression .)
+    ID              reduce using rule 21 (expression -> expression DIVIDE expression .)
+    PRINT           reduce using rule 21 (expression -> expression DIVIDE expression .)
+    INPUT           reduce using rule 21 (expression -> expression DIVIDE expression .)
+    EXIT            reduce using rule 21 (expression -> expression DIVIDE expression .)
+    $end            reduce using rule 21 (expression -> expression DIVIDE expression .)
+
+  ! PLUS            [ shift and go to state 21 ]
+  ! MINUS           [ shift and go to state 22 ]
+  ! TIMES           [ shift and go to state 20 ]
+  ! DIVIDE          [ shift and go to state 19 ]
+
+
+state 27
+
+    (20) expression -> expression TIMES expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    RPAREN          reduce using rule 20 (expression -> expression TIMES expression .)
+    PLUS            reduce using rule 20 (expression -> expression TIMES expression .)
+    MINUS           reduce using rule 20 (expression -> expression TIMES expression .)
+    TIMES           reduce using rule 20 (expression -> expression TIMES expression .)
+    DIVIDE          reduce using rule 20 (expression -> expression TIMES expression .)
+    NEWLINE         reduce using rule 20 (expression -> expression TIMES expression .)
+    ID              reduce using rule 20 (expression -> expression TIMES expression .)
+    PRINT           reduce using rule 20 (expression -> expression TIMES expression .)
+    INPUT           reduce using rule 20 (expression -> expression TIMES expression .)
+    EXIT            reduce using rule 20 (expression -> expression TIMES expression .)
+    $end            reduce using rule 20 (expression -> expression TIMES expression .)
+
+  ! PLUS            [ shift and go to state 21 ]
+  ! MINUS           [ shift and go to state 22 ]
+  ! TIMES           [ shift and go to state 20 ]
+  ! DIVIDE          [ shift and go to state 19 ]
+
+
+state 28
+
+    (18) expression -> expression PLUS expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    RPAREN          reduce using rule 18 (expression -> expression PLUS expression .)
+    PLUS            reduce using rule 18 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 18 (expression -> expression PLUS expression .)
+    NEWLINE         reduce using rule 18 (expression -> expression PLUS expression .)
+    ID              reduce using rule 18 (expression -> expression PLUS expression .)
+    PRINT           reduce using rule 18 (expression -> expression PLUS expression .)
+    INPUT           reduce using rule 18 (expression -> expression PLUS expression .)
+    EXIT            reduce using rule 18 (expression -> expression PLUS expression .)
+    $end            reduce using rule 18 (expression -> expression PLUS expression .)
+    TIMES           shift and go to state 20
+    DIVIDE          shift and go to state 19
+
+  ! TIMES           [ reduce using rule 18 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 18 (expression -> expression PLUS expression .) ]
+  ! PLUS            [ shift and go to state 21 ]
+  ! MINUS           [ shift and go to state 22 ]
+
+
+state 29
+
+    (19) expression -> expression MINUS expression .
+    (18) expression -> expression . PLUS expression
+    (19) expression -> expression . MINUS expression
+    (20) expression -> expression . TIMES expression
+    (21) expression -> expression . DIVIDE expression
+
+    RPAREN          reduce using rule 19 (expression -> expression MINUS expression .)
+    PLUS            reduce using rule 19 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 19 (expression -> expression MINUS expression .)
+    NEWLINE         reduce using rule 19 (expression -> expression MINUS expression .)
+    ID              reduce using rule 19 (expression -> expression MINUS expression .)
+    PRINT           reduce using rule 19 (expression -> expression MINUS expression .)
+    INPUT           reduce using rule 19 (expression -> expression MINUS expression .)
+    EXIT            reduce using rule 19 (expression -> expression MINUS expression .)
+    $end            reduce using rule 19 (expression -> expression MINUS expression .)
+    TIMES           shift and go to state 20
+    DIVIDE          shift and go to state 19
+
+  ! TIMES           [ reduce using rule 19 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 19 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ shift and go to state 21 ]
+  ! MINUS           [ shift and go to state 22 ]
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for NEWLINE in state 5 resolved as shift

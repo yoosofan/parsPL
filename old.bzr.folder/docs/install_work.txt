@@ -1,0 +1,24 @@
+
+1.
+	1.1$ cd /usr/local/lib
+		   $ curl -O http://www.antlr4.org/download/antlr-4.0-complete.jar
+
+		   Or just download in browser using URL:
+
+			   http://www.antlr4.org/download/antlr-4.0-complete.jar
+
+		   and put it somewhere rational like /usr/local/lib.
+
+	1.2. Add antlr-4.0-complete.jar to your CLASSPATH:
+
+	   $ export CLASSPATH=".:/usr/local/lib/antlr-4.0-complete.jar:$CLASSPATH"
+
+	   Is also a good idea to put this in your .bash_profile or whatever your
+	   startup script is.
+	1.3. Create aliases for the ANTLR Tool, and TestRig.
+	   $ alias antlr4='java -jar /usr/local/lib/antlr-4.0-complete.jar'
+	   $ alias grun  ='java org.antlr.v4.runtime.misc.TestRig'
+
+
+
+Install netbeans
